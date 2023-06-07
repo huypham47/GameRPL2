@@ -23,13 +23,14 @@ public class ItemDropSpawner : Spawner
         //itemDrop.gameObject.SetActive(true);
     }
 
-    public virtual void Drop(ItemInventory itemInventory, Vector3 pos, Quaternion rot)
+    public virtual Transform Drop(ItemInventory itemInventory, Vector3 pos, Quaternion rot)
     {
         ItemCode itemCode = itemInventory.itemProfileSO.itemCode;
         Transform itemDrop = this.Spawn(itemCode.ToString(), pos, rot);
-
-        Debug.Log(itemDrop.name);
-
+        if (itemDrop == null) return null;
         itemDrop.gameObject.SetActive(true);
+        ItemCtrl itemCtrl = itemDrop.GetComponent<ItemCtrl>();
+        itemCtrl.SetItemInventory(itemInventory);
+        return itemDrop;
     }
 }

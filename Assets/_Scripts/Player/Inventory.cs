@@ -13,6 +13,24 @@ public class Inventory : _MonoBehaviour
         base.Start();
     }
 
+    public virtual bool AddItem(ItemInventory itemInventory)
+    {
+        int addCount = itemInventory.itemCount;
+        ItemProfileSO itemProfileSO = itemInventory.itemProfileSO;
+        ItemCode itemCode = itemProfileSO.itemCode;
+        ItemType itemType = itemProfileSO.itemType;
+
+        if (itemType == ItemType.Equiment) return AddEquipment(itemInventory);
+        return AddItem(itemCode, addCount);
+    }
+
+    public virtual bool AddEquipment(ItemInventory itemInventory)
+    {
+        if (this.IsIventoryFull()) return false;
+        this.items.Add(itemInventory);
+        return true;
+    }
+
     public virtual bool AddItem(ItemCode itemCode, int addCount)
     {
         ItemProfileSO itemProfileSO = this.GetItemProfile(itemCode);

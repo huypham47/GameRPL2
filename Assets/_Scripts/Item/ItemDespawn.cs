@@ -6,7 +6,6 @@ public class ItemDespawn : DespawnByDistance
 {
     public override void DespawnObject()
     {
-        Debug.Log("DespawnObject");
         ItemDropSpawner.Instance.Despawn(transform.parent);
     }
 }

@@ -23,11 +23,6 @@ public class ItemPickupable : _MonoBehaviour
         this.itemCtrl = transform.parent.GetComponent<ItemCtrl>();
     }
 
-    public static ItemCode String2ItemCode(string itemName)
-    {
-        return (ItemCode)System.Enum.Parse(typeof(ItemCode), itemName);
-    }
-
     protected virtual void LoadBoxCollider()
     {
         if (this.collider != null) return;
@@ -36,7 +31,7 @@ public class ItemPickupable : _MonoBehaviour
 
     public virtual ItemCode GetItemCode()
     {
-        return ItemPickupable.String2ItemCode(transform.parent.name);
+        return ItemCodeParse.FromString(transform.parent.name);
     }
 
     public virtual void Picked()

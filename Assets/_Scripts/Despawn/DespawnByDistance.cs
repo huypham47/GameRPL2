@@ -15,14 +15,7 @@ public class DespawnByDistance : Despawn
     protected override bool CanDespawn()
     {
         this.distance = Vector3.Distance(transform.parent.position, PlayerCtrl.Instance.transform.position);
-        if (transform.parent.name == "Health")
-            Debug.Log(transform.parent.name + " " + transform.parent.position + " " + distance+ " " + disLitmit);
-        if (this.distance > this.disLitmit)
-        {
-            if (transform.parent.name == "Health") Debug.Log("true");
-            return true;
-        }
-        if (transform.parent.name == "Health")  Debug.Log("false");
+        if (this.distance > this.disLitmit) return true;
         return false;
     }
 }

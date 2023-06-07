@@ -10,7 +10,9 @@ public class ItemCtrl : _MonoBehaviour
     [SerializeField] protected ItemProfileSO itemS0;
     public ItemProfileSO ItemSO => itemS0;
 
-    
+    [SerializeField] protected ItemInventory itemInventory;
+    public ItemInventory ItemInventory => itemInventory;
+
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -18,7 +20,10 @@ public class ItemCtrl : _MonoBehaviour
         this.LoadItemProfileSO();
     }
 
-   
+    public virtual void SetItemInventory(ItemInventory itemInventory)
+    {
+        this.itemInventory = itemInventory;
+    }
 
     protected virtual void LoadItemDespawn()
     {

@@ -14,8 +14,6 @@ public  class ItemUpgrade : ItemAbstract
 
     protected virtual void Test()
     {
-        Debug.Log("test");
-
         if (this.UpgradeItem(0)) PlayerCtrl.Instance.PlayerDamageReceiver.AddMaxHP();
     }
 

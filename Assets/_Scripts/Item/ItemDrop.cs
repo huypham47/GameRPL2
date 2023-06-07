@@ -18,6 +18,7 @@ public class ItemDrop : ItemAbstract
     protected virtual void DropItemIndex(int itemIndex)
     {
         ItemInventory itemInventory = this.inventory.Items[itemIndex];
+        this.inventory.Items.RemoveAt(itemIndex);
         Vector3 pos = transform.position - transform.forward*100;
         ItemDropSpawner.Instance.Drop(itemInventory, pos, transform.rotation);
     }

@@ -11,9 +11,7 @@ public abstract class Despawn : _MonoBehaviour
 
     protected virtual void Despawning()
     {
-        if (transform.parent.name == "Health")  Debug.Log("Despawn: "+ !this.CanDespawn());
         if (!this.CanDespawn()) return;
-        if (transform.parent.name == "Health")  Debug.Log("despawn");
         this.DespawnObject();
     }
 
