@@ -200,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 13385549}
   _rigibody: {fileID: 13385548}
-  bulletCtrl: {fileID: 1889390510}
+  allBulletCtrl: {fileID: 0}
 --- !u!1 &16813819
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd01eb16f5ff84fb38c8e1e16bc253a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDespawn: 0
   delay: 2
   timer: 0
 --- !u!1 &51901113
@@ -1087,6 +1088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd01eb16f5ff84fb38c8e1e16bc253a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDespawn: 0
   delay: 2
   timer: 0
 --- !u!1 &266303369
@@ -1133,6 +1135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7ac6c54a49143a6a37966529eac551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDespawn: 0
   disLitmit: 1000
   distance: 0
 --- !u!1 &303851489
@@ -1322,7 +1325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  bulletCtrl: {fileID: 1202354889}
+  allBulletCtrl: {fileID: 0}
 --- !u!1 &342225159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,7 +1374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 342225163}
   _rigibody: {fileID: 342225162}
-  bulletCtrl: {fileID: 0}
+  allBulletCtrl: {fileID: 0}
 --- !u!54 &342225162
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1449,7 +1452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 348485793}
   _rigibody: {fileID: 348485792}
-  bulletCtrl: {fileID: 0}
+  allBulletCtrl: {fileID: 0}
 --- !u!54 &348485792
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2761,11 +2764,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 888732562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b51f367aac15747caacbda5daf3b0634, type: 3}
+  m_Script: {fileID: 11500000, guid: a6c56a457fefd4d83a5b5723ab056d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boomerangDamageSender: {fileID: 1294007878}
-  boomerangDespawn: {fileID: 1159522499}
+  damageSender: {fileID: 1294007878}
+  despawn: {fileID: 1159522499}
   bulletSO: {fileID: 11400000, guid: 13f76972d2a7443d1b1f40eddde692d5, type: 2}
 --- !u!1 &891332936
 GameObject:
@@ -2920,7 +2923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 200
   direction: {x: 0, y: 0, z: 1}
-  bulletCtrl: {fileID: 1889390510}
+  allBulletCtrl: {fileID: 0}
 --- !u!1 &957289260
 GameObject:
   m_ObjectHideFlags: 0
@@ -3345,6 +3348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2410b551deb024391a1dc972a2215455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDespawn: 0
   disLitmit: 1000
   distance: 0
 --- !u!1 &1088573357
@@ -3445,6 +3449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2c6d39f3e514f3e87f0e5c2c08edd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDespawn: 0
   disLitmit: 30000
   distance: 0
 --- !u!4 &1114302039
@@ -4025,11 +4030,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1202354887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1022cfc0a49744dc1b66e69136c1a4b8, type: 3}
+  m_Script: {fileID: 11500000, guid: a6c56a457fefd4d83a5b5723ab056d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamageSender: {fileID: 330011583}
-  bulletDespawn: {fileID: 266303371}
+  damageSender: {fileID: 330011583}
+  despawn: {fileID: 266303371}
   bulletSO: {fileID: 11400000, guid: bd3b5ecd0739544929ecfc1c5e37d6fc, type: 2}
 --- !u!1 &1204105255
 GameObject:
@@ -4220,7 +4225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  bulletCtrl: {fileID: 1889390510}
+  allBulletCtrl: {fileID: 0}
 --- !u!1 &1279002091
 GameObject:
   m_ObjectHideFlags: 0
@@ -4271,7 +4276,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDespawn: {fileID: 1085343923}
-  itemS0: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+  itemInventory:
+    itemProfileSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+    itemCount: 1
+    maxStack: 7
+    upgradeLevel: 0
 --- !u!1 &1283040880
 GameObject:
   m_ObjectHideFlags: 0
@@ -4348,7 +4357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  boomerangCtrl: {fileID: 888732564}
+  allBulletCtrl: {fileID: 888732564}
 --- !u!1 &1304940544
 GameObject:
   m_ObjectHideFlags: 0
@@ -5044,7 +5053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 1436861343}
   _rigibody: {fileID: 1436861342}
-  boomerangCtrl: {fileID: 888732564}
+  allBulletCtrl: {fileID: 888732564}
 --- !u!1 &1461399984
 GameObject:
   m_ObjectHideFlags: 0
@@ -5300,7 +5309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 300
   direction: {x: 0, y: 0, z: 1}
-  bulletCtrl: {fileID: 1202354889}
+  allBulletCtrl: {fileID: 1202354889}
 --- !u!1 &1624916492
 GameObject:
   m_ObjectHideFlags: 0
@@ -5379,6 +5388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2c6d39f3e514f3e87f0e5c2c08edd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDespawn: 0
   disLitmit: 30000
   distance: 0
 --- !u!1 &1650041865
@@ -5431,7 +5441,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDespawn: {fileID: 2114086427}
-  itemS0: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+  itemInventory:
+    itemProfileSO: {fileID: 0}
+    itemCount: 0
+    maxStack: 7
+    upgradeLevel: 0
 --- !u!1 &1675900380
 GameObject:
   m_ObjectHideFlags: 0
@@ -6240,6 +6254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7ac6c54a49143a6a37966529eac551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDespawn: 0
   disLitmit: 1000
   distance: 0
 --- !u!4 &1810961933
@@ -6490,11 +6505,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1889390508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1022cfc0a49744dc1b66e69136c1a4b8, type: 3}
+  m_Script: {fileID: 11500000, guid: a6c56a457fefd4d83a5b5723ab056d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamageSender: {fileID: 1273875016}
-  bulletDespawn: {fileID: 1810961932}
+  damageSender: {fileID: 1273875016}
+  despawn: {fileID: 1810961932}
   bulletSO: {fileID: 11400000, guid: 12bf81f9f1c9c42dda1eae9484395f51, type: 2}
 --- !u!1 &1901895696
 GameObject:
@@ -6931,7 +6946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 2068467127}
   _rigibody: {fileID: 2068467126}
-  bulletCtrl: {fileID: 1202354889}
+  allBulletCtrl: {fileID: 0}
 --- !u!54 &2068467126
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7125,6 +7140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2410b551deb024391a1dc972a2215455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDespawn: 0
   disLitmit: 1000
   distance: 0
 --- !u!4 &2114086428
@@ -7186,7 +7202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52726f22542e40e999e8ba13d5508bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boomerangCtrl: {fileID: 888732564}
+  allBulletCtrl: {fileID: 888732564}
   timer: 0
 --- !u!1 &1021891030464766
 GameObject:

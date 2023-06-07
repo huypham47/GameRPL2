@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoomerangDespawn : Despawn
 {
-    [SerializeField] public bool canDespawn = false;
+    
 
     public override void DespawnObject()
     {

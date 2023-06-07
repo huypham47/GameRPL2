@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletDamageSender : DamageSender
 {
-    [SerializeField] protected BulletCtrl bulletCtrl;
+    [SerializeField] protected AllBulletCtrl allBulletCtrl;
 
     protected override void LoadComponent()
     {
@@ -14,13 +14,13 @@ public class BulletDamageSender : DamageSender
 
     protected virtual void LoadBulletCtrl()
     {
-        if (this.bulletCtrl != null) return;
-        this.bulletCtrl = transform.parent.GetComponent<BulletCtrl>();
+        if (this.allBulletCtrl != null) return;
+        this.allBulletCtrl = transform.parent.GetComponent<AllBulletCtrl>();
     }
 
     private void OnEnable()
     {
-        this.damage = this.bulletCtrl.BulletSO.damage;
+        this.damage = this.allBulletCtrl.BulletSO.damage;
     }
 
     public override void Send(DamageReceiver damageReceiver)
@@ -31,6 +31,6 @@ public class BulletDamageSender : DamageSender
 
     protected virtual void DestroyBullet()
     {
-        this.bulletCtrl.BulletDespawn.DespawnObject();
+        this.allBulletCtrl.Despawn.DespawnObject();
     }
 }

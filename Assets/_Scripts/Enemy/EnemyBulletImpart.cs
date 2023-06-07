@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyBulletImpart : Impact
 {
-    [SerializeField] protected BulletCtrl bulletCtrl;
-    public BulletCtrl BulletCtrl => bulletCtrl;
+    [SerializeField] protected AllBulletCtrl allBulletCtrl;
+    public AllBulletCtrl AllBulletCtrl => allBulletCtrl;
 
 
     protected override void LoadComponent()
@@ -16,14 +16,14 @@ public class EnemyBulletImpart : Impact
 
     protected virtual void LoadBulletCtrl()
     {
-        if (this.bulletCtrl != null) return;
-        this.bulletCtrl = transform.parent.GetComponent<BulletCtrl>();
+        if (this.allBulletCtrl != null) return;
+        this.allBulletCtrl = transform.parent.GetComponent<AllBulletCtrl>();
     }
 
     protected override void OnTriggerEnter(Collider other)
     {
         if (other.name == "Enemy_2" || other.name == "Enemy_1") return;
         base.OnTriggerEnter(other);
-        this.bulletCtrl.BulletDamageSender.Send(other.transform);
+        this.allBulletCtrl.DamageSender.Send(other.transform);
     } 
 }

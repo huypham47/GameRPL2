@@ -6,8 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBulletImpart : Impact
 {
-    [SerializeField] protected BulletCtrl bulletCtrl;
-    public BulletCtrl BulletCtrl => bulletCtrl;
+    [SerializeField] protected AllBulletCtrl allBulletCtrl;
+    public AllBulletCtrl AllBulletCtrl => allBulletCtrl;
 
 
     protected override void LoadComponent()
@@ -18,14 +18,14 @@ public class PlayerBulletImpart : Impact
 
     protected virtual void LoadBulletCtrl()
     {
-        if (this.bulletCtrl != null) return;
-        this.bulletCtrl = transform.parent.GetComponent<BulletCtrl>();
+        if (this.allBulletCtrl != null) return;
+        this.allBulletCtrl = transform.parent.GetComponent<AllBulletCtrl>();
     }
 
     protected override void OnTriggerEnter(Collider other)
     {
         if (other.name == "PlayerDamageReceiver") return;
         base.OnTriggerEnter(other);
-        this.bulletCtrl.BulletDamageSender.Send(other.transform);
+        this.allBulletCtrl.DamageSender.Send(other.transform);
     }
 }

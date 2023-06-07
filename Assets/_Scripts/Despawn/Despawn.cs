@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Despawn : _MonoBehaviour
 {
+    public bool canDespawn = false;
+
     protected virtual void FixedUpdate()
     {
         this.Despawning();

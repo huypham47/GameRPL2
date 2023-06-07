@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BoomerangImpact : Impact
 {
-    [SerializeField] protected BoomerangCtrl boomerangCtrl;
-    public BoomerangCtrl BoomerangCtrl => boomerangCtrl;
+    [SerializeField] protected AllBulletCtrl allBulletCtrl;
+    public AllBulletCtrl AllBulletCtrl => allBulletCtrl;
 
 
     protected override void LoadComponent()
@@ -16,8 +16,8 @@ public class BoomerangImpact : Impact
 
     protected virtual void LoadBoomerangCtrl()
     {
-        if (this.boomerangCtrl != null) return;
-        this.boomerangCtrl = transform.parent.GetComponent<BoomerangCtrl>();
+        if (this.allBulletCtrl != null) return;
+        this.allBulletCtrl = transform.parent.GetComponent<AllBulletCtrl>();
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -25,7 +25,7 @@ public class BoomerangImpact : Impact
         if (other.name == "EnemyDamageReceiver")
         {
             base.OnTriggerEnter(other);
-            this.boomerangCtrl.BoomerangDamageSender.Send(other.transform);
+            this.allBulletCtrl.DamageSender.Send(other.transform);
         }
     }
 }

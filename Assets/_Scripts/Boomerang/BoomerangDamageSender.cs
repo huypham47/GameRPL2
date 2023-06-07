@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BoomerangDamageSender : DamageSender
 {
-    [SerializeField] protected BoomerangCtrl boomerangCtrl;
-    public BoomerangCtrl BoomerangCtrl => boomerangCtrl;
+    [SerializeField] protected AllBulletCtrl allBulletCtrl;
+    public AllBulletCtrl AllBulletCtrl => allBulletCtrl;
 
     protected override void LoadComponent()
     {
@@ -15,12 +15,12 @@ public class BoomerangDamageSender : DamageSender
 
     protected virtual void LoadBoomerangCrl()
     {
-        if (this.boomerangCtrl != null) return;
-        this.boomerangCtrl = transform.parent.GetComponent<BoomerangCtrl>();
+        if (this.allBulletCtrl != null) return;
+        this.allBulletCtrl = transform.parent.GetComponent<AllBulletCtrl>();
     }
 
     private void OnEnable()
     {
-        this.damage = this.boomerangCtrl.BulletSO.damage;
+        this.damage = this.allBulletCtrl.BulletSO.damage;
     }
 }
