@@ -12,14 +12,15 @@ public class ItemDrop : ItemAbstract
 
     protected virtual void Test()
     {
-        this.DropItemIndex(1);
+        Vector3 pos = transform.position - transform.forward * 100;
+
+        this.DropItemIndex(1, pos, transform.rotation);
     }
 
-    protected virtual void DropItemIndex(int itemIndex)
+    protected virtual void DropItemIndex(int itemIndex, Vector3 pos, Quaternion rot)
     {
         ItemInventory itemInventory = this.inventory.Items[itemIndex];
         this.inventory.Items.RemoveAt(itemIndex);
-        Vector3 pos = transform.position - transform.forward*100;
-        ItemDropSpawner.Instance.Drop(itemInventory, pos, transform.rotation);
+        ItemDropSpawner.Instance.Drop(itemInventory, pos, rot);
     }
 }

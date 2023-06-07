@@ -27,13 +27,14 @@ public class Inventory : _MonoBehaviour
     public virtual bool AddEquipment(ItemInventory itemInventory)
     {
         if (this.IsIventoryFull()) return false;
+        itemInventory = itemInventory.Clone();
         this.items.Add(itemInventory);
         return true;
     }
 
     public virtual bool AddItem(ItemCode itemCode, int addCount)
     {
-        ItemProfileSO itemProfileSO = this.GetItemProfile(itemCode);
+        ItemProfileSO itemProfileSO = ItemProfileSO.FindByItemCode(itemCode);
 
         int addRemain = addCount;
         int newcount;

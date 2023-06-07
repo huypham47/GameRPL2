@@ -6,10 +6,6 @@ public class ItemCtrl : _MonoBehaviour
 {
     [SerializeField] protected ItemDespawn itemDespawn;
     public ItemDespawn ItemDespawn => itemDespawn;
-
-    [SerializeField] protected ItemProfileSO itemS0;
-    public ItemProfileSO ItemSO => itemS0;
-
     [SerializeField] protected ItemInventory itemInventory;
     public ItemInventory ItemInventory => itemInventory;
 
@@ -17,12 +13,17 @@ public class ItemCtrl : _MonoBehaviour
     {
         base.LoadComponent();
         this.LoadItemDespawn();
-        this.LoadItemProfileSO();
+        this.LoadItemInventory();
+    }
+
+    private void OnEnable()
+    {
+        this.ResetItem();
     }
 
     public virtual void SetItemInventory(ItemInventory itemInventory)
     {
-        this.itemInventory = itemInventory;
+        this.itemInventory = itemInventory.Clone();
     }
 
     protected virtual void LoadItemDespawn()
@@ -31,10 +32,19 @@ public class ItemCtrl : _MonoBehaviour
         this.itemDespawn = GetComponentInChildren<ItemDespawn>();
     }
 
-    protected virtual void LoadItemProfileSO()
+    protected virtual void LoadItemInventory()
     {
-        if (this.itemS0 != null) return;
-        string resPath = "ItemProfiles/" + transform.name;
-        this.itemS0 = Resources.Load<ItemProfileSO>(resPath);
+        if (this.itemInventory.itemProfileSO != null) return;
+        ItemCode itemCode = ItemCodeParse.FromString(transform.name);
+        ItemProfileSO itemProfileSO = ItemProfileSO.FindByItemCode(itemCode);
+        this.itemInventory.itemProfileSO = itemProfileSO;
+        this.ResetItem();
+    }
+
+    protected virtual void ResetItem()
+    {
+        this.itemInventory.itemCount = 1;
+        this.itemInventory.upgradeLevel = 0;
+
     }
 }

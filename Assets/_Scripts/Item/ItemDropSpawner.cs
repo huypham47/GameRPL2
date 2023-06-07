@@ -7,8 +7,6 @@ public class ItemDropSpawner : Spawner
     private static ItemDropSpawner instance;
     public static ItemDropSpawner Instance { get => instance; }
 
-    public static string enemyOne = "Enemy_2";
-
     protected override void Awake()
     {
         base.Awake();
