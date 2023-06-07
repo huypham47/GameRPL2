@@ -6,6 +6,7 @@ using UnityEngine;
 public class TextScore : _MonoBehaviour
 {
     [SerializeField] protected int score = 0;
+    public int Score => score;
 
     [SerializeField] protected TMP_Text textScore;
 
