@@ -7,13 +7,13 @@ public class PlayerDamageReceiver : DamageReceiver
 {
     [SerializeField] protected PlayerCtrl playerCtrl;
     [SerializeField] protected float timer = 0;
-    [SerializeField] protected float delay = 15f;
+    [SerializeField] protected float delay = 12f;
     [SerializeField] protected int playerHP = 10;
     [SerializeField] protected bool canAdd = true;
 
     protected void FixedUpdate()
     {
-        if (this.canAdd)
+        if (this.canAdd && this.hp < this.hpMax)
         {
             this.timer += Time.fixedDeltaTime;
             if (this.timer < this.delay) return;
@@ -67,7 +67,7 @@ public class PlayerDamageReceiver : DamageReceiver
 
     IEnumerator CanAdd()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(4f);
         canAdd = true;
         this.timer = 0;
     }

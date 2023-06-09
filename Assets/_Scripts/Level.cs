@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Level : _MonoBehaviour
 {
-    [SerializeField] protected int levelCurrent = 0;
+    [SerializeField] protected int levelCurrent = 1;
     [SerializeField] protected int levelMax = 99;
     public int LevelCurrent => levelCurrent;
     public int LevelMax => levelMax;

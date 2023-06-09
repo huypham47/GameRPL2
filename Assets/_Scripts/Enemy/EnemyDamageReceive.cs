@@ -42,7 +42,7 @@ public class EnemyDamageReceive : DamageReceiver
         this.enemyCtrl.EnemyDespawn.DespawnObject();
         this.OnDeadFX();
         TextScore.Instance.UpdateScore();
-
+        MapLevel.Instace.Leveling();
         //DropItem
         this.OnDeadDropItem();
     }
@@ -65,7 +65,8 @@ public class EnemyDamageReceive : DamageReceiver
 
     public override void Reborn()
     {
-        this.hpMax = this.enemyCtrl.EnemySO.hpMax;
+        int currentLvel = MapLevel.Instace.LevelCurrent;
+        this.hpMax = this.enemyCtrl.EnemySO.upgradeLevels[currentLvel].enemyHp;
         this.enemyCtrl.CanvasHealth.HealthBar.SetMaxHealth(this.hpMax);
         base.Reborn();
     }

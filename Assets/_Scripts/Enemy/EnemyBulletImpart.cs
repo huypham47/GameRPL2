@@ -22,7 +22,6 @@ public class EnemyBulletImpart : Impact
 
     protected override void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         if (other.name == "PlayerDamageReceiver") 
         {
             base.OnTriggerEnter(other);

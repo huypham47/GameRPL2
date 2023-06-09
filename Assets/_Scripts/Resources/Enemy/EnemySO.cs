@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemySO : ScriptableObject
 {
     public string enemyName;
-    public int hpMax;
-    public int damage;
+    public EnemyCode enemyCode = EnemyCode.NoItem;
     public List<DropRate> dropList;
+    public List<EnemyInform> upgradeLevels;
 }

@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Enemy_2
   m_EditorClassIdentifier: 
   enemyName: Enemy_2
-  hpMax: 5
-  damage: 1
+  enemyCode: 0
   dropList:
   - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
     dropRate: 0
     minDrop: 0
     maxDrop: 0
+  upgradeLevels:
+  - enemyHp: 5
+    ememyDamage: 1
+  - enemyHp: 10
+    ememyDamage: 1

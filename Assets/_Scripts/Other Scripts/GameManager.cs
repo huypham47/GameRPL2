@@ -9,4 +9,9 @@ public class GameManager : _MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public virtual void Pause()
+    {
+        Time.timeScale = 0;
+    }
 }

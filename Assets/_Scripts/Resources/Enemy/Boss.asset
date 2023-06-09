@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc7483116a1642ef8595cbedea00d43, type: 3}
+  m_Name: Boss
+  m_EditorClassIdentifier: 
+  enemyName: Enemy_1
+  enemyCode: 0
+  dropList:
+  - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+    dropRate: 70000
+    minDrop: 0
+    maxDrop: 0
+  upgradeLevels:
+  - enemyHp: 3
+    ememyDamage: 1
+  - enemyHp: 5
+    ememyDamage: 2
