@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelByScore : Level
 {
+
     public virtual void Leveling()
     {
         
