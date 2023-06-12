@@ -17,6 +17,8 @@ public class CanvasHealth : _MonoBehaviour
     {
         if (this.enemyHealthBar != null) return;
         this.enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();
+        Debug.Log(transform.parent.name);
+        if (transform.parent.name == "Boss") this.enemyHealthBar.gameObject.SetActive(true);
         this.enemyHealthBar.gameObject.SetActive(false);
     }
 

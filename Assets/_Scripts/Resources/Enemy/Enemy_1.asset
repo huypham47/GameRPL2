@@ -22,5 +22,10 @@ MonoBehaviour:
   upgradeLevels:
   - enemyHp: 3
     ememyDamage: 1
+    ememySpeed: 0
   - enemyHp: 5
     ememyDamage: 2
+    ememySpeed: 0
+  - enemyHp: 5
+    ememyDamage: 2
+    ememySpeed: 0

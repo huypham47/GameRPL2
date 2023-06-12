@@ -13,6 +13,8 @@ public class TextScore : _MonoBehaviour
     private static TextScore instance;
     public static TextScore Instance => instance;
 
+    public bool canUpgradeScore = true;
+
     protected override void Awake()
     {
         base.Awake();
@@ -34,7 +36,9 @@ public class TextScore : _MonoBehaviour
 
     public virtual void UpdateScore()
     {
+        if (!canUpgradeScore) return;
         this.score++;
         this.textScore.text = score.ToString();
     }
+
 }

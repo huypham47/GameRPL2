@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class DamageReceiver : _MonoBehaviour
 {
-    [SerializeField] protected int hp = 1;
+    [SerializeField] protected float hp  = 1;
     public float Hp => hp;
 
-    [SerializeField] protected int hpMax = 3;
+    [SerializeField] protected float hpMax = 3;
     public float HpMax => hpMax;
 
     [SerializeField] protected bool isDead = false;
@@ -37,14 +37,14 @@ public abstract class DamageReceiver : _MonoBehaviour
         this.isDead = false;
     }
 
-    public virtual void Add(int add)
+    public virtual void Add(float add)
     {
         if (this.isDead) return;
         this.hp += add;
         if (this.hp > this.hpMax) this.hp = this.hpMax;
     }
 
-    public virtual void Deduct(int add)
+    public virtual void Deduct(float add)
     {
         if (this.isDead) return;
         this.hp -= add;

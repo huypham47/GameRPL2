@@ -6,6 +6,7 @@ public class LevelByScore : Level
 {
     public virtual void Leveling()
     {
+        
         if(TextScore.Instance.Score % 15 == 0)
             this.LevelUp();
     }

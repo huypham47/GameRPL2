@@ -6,7 +6,7 @@ public class EnemyDespawn : DespawnByDistance
 {
     public override void DespawnObject()
     {
-        EnemySpawner.Instance.Despawn(transform.parent);
+        EnemySpawnerCtrl.Instance.EnemySpawner.Despawn(transform.parent);
     }
 
     protected override void ResetValue()

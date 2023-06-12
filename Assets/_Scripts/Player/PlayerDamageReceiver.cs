@@ -57,7 +57,7 @@ public class PlayerDamageReceiver : DamageReceiver
         base.Reborn();
     }
 
-    public override void Deduct(int add)
+    public override void Deduct(float add)
     {
         base.Deduct(add);
         this.canAdd = false;
@@ -72,7 +72,7 @@ public class PlayerDamageReceiver : DamageReceiver
         this.timer = 0;
     }
 
-    public override void Add(int add)
+    public override void Add(float add)
     {
         base.Add(add);
     }

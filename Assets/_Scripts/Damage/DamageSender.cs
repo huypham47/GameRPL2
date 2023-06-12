@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageSender : _MonoBehaviour
 {
-    [SerializeField] protected int damage = 1;
+    [SerializeField] protected float damage = 1;
 
     public virtual void Send(Transform obj)
     {

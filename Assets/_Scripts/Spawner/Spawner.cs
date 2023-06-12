@@ -99,7 +99,7 @@ public abstract class Spawner : _MonoBehaviour
 
     public virtual Transform RandomPrefab()
     {
-        int rand = Random.Range(0, this.prefabs.Count);
+        int rand = Random.Range(0, this.prefabs.Count-1);
         return this.prefabs[rand];
     }
 }

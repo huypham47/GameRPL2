@@ -6,6 +6,15 @@ using UnityEngine;
 public class BulletSO : ScriptableObject
 {
     public string bulletName;
-    public int damage;
-    public float speed;
+    public float damage;
+
+    public void DamageUpgrade(float add)
+    {
+        this.damage += add;
+    }
+
+    public void SetDamage(float damage)
+    {
+        this.damage = damage;
+    }
 }

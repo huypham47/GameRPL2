@@ -12,6 +12,7 @@ public class MapLevel : LevelByScore
         base.Start();
         if (MapLevel.instace != null) return;
         MapLevel.instace = this;
+
     }
 
     public override void LevelUp()
@@ -19,5 +20,22 @@ public class MapLevel : LevelByScore
         base.LevelUp();
         PlayerCtrl.Instance.PlayerDamageReceiver.AddMaxHP();
         PlayerCtrl.Instance.PlayerDamageReceiver.Add(1);
+        
+        BulletSO bullet_3 = Resources.Load<BulletSO>("bullet/bullet_3");
+        bullet_3.DamageUpgrade(0.2f);
+    }
+
+    public override void Leveling()
+    {
+        if (TextScore.Instance.Score % 14 == 0)
+        {
+            EnemySpawnerCtrl.Instance.EnemySpawnerRandom.randomLimit = 0;
+
+            Vector3 pos = PlayerCtrl.Instance.transform.position;
+            pos.z += 800;
+            EnemySpawnerCtrl.Instance.EnemySpawner.Spawn("Boss", pos, transform.rotation);
+            TextScore.Instance.canUpgradeScore = false;
+        }
+        base.Leveling();
     }
 }

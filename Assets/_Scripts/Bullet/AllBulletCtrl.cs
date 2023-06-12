@@ -33,6 +33,15 @@ public class AllBulletCtrl : _MonoBehaviour
         if (this.bulletSO != null) return;
         string resPath = "bullet/" + transform.name;
         this.bulletSO = Resources.Load<BulletSO>(resPath);
+        
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        if (transform.name == "Boomerang")
+            this.bulletSO.SetDamage(3);
+        this.bulletSO.SetDamage(1);
     }
 
     protected virtual void LoadDamageSender()

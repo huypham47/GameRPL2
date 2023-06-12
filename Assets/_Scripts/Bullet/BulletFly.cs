@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletFly : _MonoBehaviour
 {
-    [SerializeField] protected float moveSpeed = 1f;
+    [SerializeField] protected float moveSpeed = 300f;
     public Vector3 direction = new Vector3(0, 0, 1);
 
     [SerializeField] protected AllBulletCtrl allBulletCtrl;
@@ -20,12 +20,6 @@ public class BulletFly : _MonoBehaviour
     {
         if (this.allBulletCtrl != null) return;
         this.allBulletCtrl = transform.parent.GetComponent<AllBulletCtrl>();
-    }
-
-    protected override void ResetValue()
-    {
-        base.ResetValue();
-        this.moveSpeed = this.allBulletCtrl.BulletSO.speed;
     }
 
     private void Update()

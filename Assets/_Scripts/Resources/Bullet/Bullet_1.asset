@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletName: Bullet
   damage: 1
-  speed: 300

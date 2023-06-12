@@ -9,7 +9,8 @@ public class EnemySpawnerRandom : _MonoBehaviour
 
     [SerializeField] protected float randomDelay = 3f;
     [SerializeField] protected float randomTimer = 0f;
-    [SerializeField] protected int randomLimit = 1;
+    public int randomLimit = 1;
+
 
     protected override void LoadComponent()
     {

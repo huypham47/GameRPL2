@@ -71,7 +71,7 @@ public class EnemyDamageReceive : DamageReceiver
         base.Reborn();
     }
 
-    public override void Deduct(int add)
+    public override void Deduct(float add)
     {
         base.Deduct(add);
         this.enemyCtrl.CanvasHealth.HealthBar.gameObject.SetActive(true);
@@ -80,7 +80,7 @@ public class EnemyDamageReceive : DamageReceiver
         this.timer = 0;
     }
 
-    public override void Add(int add)
+    public override void Add(float add)
     {
         base.Add(add);
         this.enemyCtrl.CanvasHealth.HealthBar.SetHealth(this.hp);
