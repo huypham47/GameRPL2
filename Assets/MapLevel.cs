@@ -7,6 +7,8 @@ public class MapLevel : LevelByScore
     [SerializeField] private static MapLevel instace;
     public static MapLevel Instace => instace;
 
+    [SerializeField] protected bool canSpawnBoss = true;
+
     protected override void Start()
     {
         base.Start();
@@ -23,10 +25,12 @@ public class MapLevel : LevelByScore
         
         BulletSO bullet_3 = Resources.Load<BulletSO>("bullet/bullet_3");
         bullet_3.DamageUpgrade(0.2f);
+        this.canSpawnBoss = true;
     }
 
     public override void Leveling()
     {
+        if (!this.canSpawnBoss) return;
         if (TextScore.Instance.Score % 14 == 0)
         {
             EnemySpawnerCtrl.Instance.EnemySpawnerRandom.randomLimit = 0;
@@ -35,6 +39,7 @@ public class MapLevel : LevelByScore
             pos.z += 800;
             EnemySpawnerCtrl.Instance.EnemySpawner.Spawn("Boss", pos, transform.rotation);
             TextScore.Instance.canUpgradeScore = false;
+            this.canSpawnBoss = false;
         }
         base.Leveling();
     }

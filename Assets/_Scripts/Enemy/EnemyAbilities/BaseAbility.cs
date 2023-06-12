@@ -6,8 +6,8 @@ public abstract class BaseAbility : _MonoBehaviour
 {
     [Header("Base Ability")]
 
-    [SerializeField] protected float timer = 0f;
-    [SerializeField] protected float delay = 10f;
+    [SerializeField] protected float timer = 4f;
+    [SerializeField] protected float delay = 5f;
     [SerializeField] protected bool isReady = false;
 
     [SerializeField] protected Abilities abilities;
@@ -19,7 +19,7 @@ public abstract class BaseAbility : _MonoBehaviour
         this.LoadAbilities();
     }
 
-    protected virtual void LoadAbilities    ()
+    protected virtual void LoadAbilities()
     {
         if (this.abilities != null) return;
         this.abilities = transform.parent.GetComponent<Abilities>();

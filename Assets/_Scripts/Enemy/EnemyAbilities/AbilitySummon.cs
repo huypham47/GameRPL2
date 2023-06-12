@@ -7,6 +7,14 @@ public class AbilitySummon : BaseAbility
     [Header("Ability Summon")]
 
     [SerializeField] protected Spawner spawner;
+    [SerializeField] protected List<Transform> enemies;
+    [SerializeField] protected int enemyLimit = 3;
+
+    protected override void Start()
+    {
+        base.Start();
+        this.enemies = new List<Transform>();
+    }
 
     protected override void LoadComponent()
     {
@@ -25,20 +33,39 @@ public class AbilitySummon : BaseAbility
     {
         base.FixedUpdate();
         this.Summoning();
+        this.ClearDeadMinion();
     }
 
     protected virtual void Summoning()
     {
+        if (this.enemies.Count >= this.enemyLimit)
+        {
+            this.timer = 0;
+            return;
+        }
         if (!this.isReady) return;
         this.Summon();
+    }
+
+    protected virtual void ClearDeadMinion()
+    {
+        foreach(Transform enemy in this.enemies)
+        {
+            if(enemy.gameObject.activeSelf == false)
+            {
+                this.enemies.Remove(enemy);
+                return;
+            }
+        }
     }
 
     protected virtual void Summon()
     {
         Transform spawnPos = this.abilities.AbilityObjectCtrl.SpawnPoints.GetRandom();
-
-        Transform prefab = this.spawner.RandomPrefab();
-        this.spawner.Spawn(prefab, spawnPos.position, spawnPos.rotation);
+        Transform enemyPrefab = this.spawner.RandomPrefab();
+        Transform enemy = this.spawner.Spawn(enemyPrefab, spawnPos.position, spawnPos.rotation);
+        enemy.parent = this.abilities.AbilityObjectCtrl.transform;
+        this.enemies.Add(enemy);
         this.Active();
     }
 }
