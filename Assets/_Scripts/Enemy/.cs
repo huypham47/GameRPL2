@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShooting : Shooting
+public abstract class EnemyMovementAbstract : _MonoBehaviour
 {
+    [SerializeField] protected Vector3 targetPosition;
+    
     [SerializeField] protected EnemyCtrl enemyCtrl;
+    public EnemyCtrl EnemyCtrl => enemyCtrl;
 
     protected override void LoadComponent()
     {
@@ -18,14 +21,15 @@ public class EnemyShooting : Shooting
         this.enemyCtrl = transform.parent.GetComponent<EnemyCtrl>();
     }
 
-    protected virtual void OnEnable()
+    protected virtual void FixedUpdate()
     {
-        int currentLvel = MapLevel.Instace.LevelCurrent-1;
-        this.delay = this.enemyCtrl.EnemySO.upgradeLevels[currentLvel].ememySpeed;
+        this.GetTargetPosition();
     }
 
-    protected override void SpawnBullet(Vector3 spawnPos, Quaternion rotation)
+    protected virtual void GetTargetPosition()
     {
-        Transform newBullet = BulletSpawner.Instance.Spawn("Bullet_3", spawnPos, rotation);
+        this.targetPosition = PlayerCtrl.Instance.transform.position;
     }
 }
+
+

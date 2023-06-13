@@ -66,6 +66,13 @@ public class AbilitySummon : BaseAbility
         Transform enemy = this.spawner.Spawn(enemyPrefab, spawnPos.position, spawnPos.rotation);
         enemy.parent = this.abilities.AbilityObjectCtrl.transform;
         this.enemies.Add(enemy);
+        StartCoroutine(ChangeParent(enemy));
         this.Active();
+    }
+
+    IEnumerator ChangeParent(Transform enemy)
+    {
+        yield return new WaitForSeconds(1f);
+        enemy.parent = EnemySpawner.Instance.Holder;
     }
 }

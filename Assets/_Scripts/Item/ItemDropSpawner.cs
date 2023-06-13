@@ -7,6 +7,8 @@ public class ItemDropSpawner : Spawner
     private static ItemDropSpawner instance;
     public static ItemDropSpawner Instance { get => instance; }
 
+    [SerializeField] protected float dropRate = 1;
+
     protected override void Awake()
     {
         base.Awake();
@@ -14,14 +16,26 @@ public class ItemDropSpawner : Spawner
         ItemDropSpawner.instance = this;
     }
 
-    public virtual void Drop(List<DropRate> dropLists, Vector3 pos, Quaternion rot)
+    public virtual List<ItemDropRate> Drop(List<ItemDropRate> dropLists, Vector3 pos, Quaternion rot)
     {
-        ItemCode itemCode = dropLists[0].itemSO.itemCode;
-        Transform itemDrop = this.Spawn(itemCode.ToString(), pos, rot);
+        List<ItemDropRate> dropItems = new List<ItemDropRate>();
+        if (dropLists.Count < 1) return dropItems;
+        dropItems = this.DropItems(dropLists);
+
+        foreach(ItemDropRate item in dropItems)
+        {
+            ItemCode itemCode = item.itemSO.itemCode;
+            pos.x += 10;
+            Transform itemDrop = this.Spawn(itemCode.ToString(), pos, rot);
+            if (itemDrop == null) continue;
+            itemDrop.gameObject.SetActive(true);
+        }
+
+        return dropItems;
         //itemDrop.gameObject.SetActive(true);
     }
 
-    public virtual Transform Drop(ItemInventory itemInventory, Vector3 pos, Quaternion rot)
+    public virtual Transform DropFromInventory(ItemInventory itemInventory, Vector3 pos, Quaternion rot)
     {
         ItemCode itemCode = itemInventory.itemProfileSO.itemCode;
         Transform itemDrop = this.Spawn(itemCode.ToString(), pos, rot);
@@ -31,4 +45,23 @@ public class ItemDropSpawner : Spawner
         itemCtrl.SetItemInventory(itemInventory);
         return itemDrop;
     }
+
+    protected virtual List<ItemDropRate> DropItems(List<ItemDropRate> items)
+    {
+        List<ItemDropRate> droppedItems = new List<ItemDropRate>();
+
+        float rate, itemRate;
+        foreach(ItemDropRate item in items)
+        {
+            rate = Random.Range(0, 1f);
+            itemRate = item.dropRate / 100000f * this.dropRate;
+            if (rate <= itemRate)
+            {
+                droppedItems.Add(item);
+
+            }
+        }
+        return droppedItems;
+    }
+
 }

@@ -10,6 +10,9 @@ public class PlayerCtrl : _MonoBehaviour
     [SerializeField] protected PlayerDamageReceiver playerDamageReceiver;
     public PlayerDamageReceiver PlayerDamageReceiver => playerDamageReceiver;
 
+    [SerializeField] protected AbilityCtrl abilityCtrl;
+    public AbilityCtrl AbilityCtrl => abilityCtrl;
+
     protected override void Awake()
     {
         base.Awake();
@@ -21,11 +24,18 @@ public class PlayerCtrl : _MonoBehaviour
     {
         base.LoadComponent();
         this.LoadPlayerDamageReceiver();
+        this.LoadAbilities();
     }
 
     protected virtual void LoadPlayerDamageReceiver()
     {
         if (this.playerDamageReceiver != null) return;
         this.playerDamageReceiver = GetComponentInChildren<PlayerDamageReceiver>();
+    }
+
+    protected virtual void LoadAbilities()
+    {
+        if (this.abilityCtrl != null) return;
+        this.abilityCtrl = GetComponentInChildren<AbilityCtrl>();
     }
 }

@@ -20,7 +20,7 @@ public class EnemyDamageSender : DamageSender
 
     private void OnEnable()
     {
-        int currentLvel = MapLevel.Instace.LevelCurrent;
+        int currentLvel = MapLevel.Instace.LevelCurrent-1;
         this.damage = this.enemyCtrl.EnemySO.upgradeLevels[currentLvel].ememyDamage;
     }
 }

@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc7483116a1642ef8595cbedea00d43, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  enemyName: Enemy_1
-  enemyCode: 0
+  enemyName: Boss
+  enemyCode: 3
   dropList:
   - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
     dropRate: 70000
     minDrop: 0
     maxDrop: 0
   upgradeLevels:
-  - enemyHp: 3
-    ememyDamage: 1
-    ememySpeed: 0
-  - enemyHp: 5
+  - enemyHp: 10
     ememyDamage: 2
-    ememySpeed: 0
-  - enemyHp: 5
-    ememyDamage: 2
-    ememySpeed: 0
+    ememySpeed: 2.5
+  - enemyHp: 15
+    ememyDamage: 2.5
+    ememySpeed: 2.4
+  - enemyHp: 20
+    ememyDamage: 3
+    ememySpeed: 2.6

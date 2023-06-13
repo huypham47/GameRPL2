@@ -21,6 +21,6 @@ public class ItemDrop : ItemAbstract
     {
         ItemInventory itemInventory = this.inventory.Items[itemIndex];
         this.inventory.Items.RemoveAt(itemIndex);
-        ItemDropSpawner.Instance.Drop(itemInventory, pos, rot);
+        ItemDropSpawner.Instance.DropFromInventory(itemInventory, pos, rot);
     }
 }

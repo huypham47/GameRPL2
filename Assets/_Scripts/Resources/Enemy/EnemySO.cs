@@ -7,6 +7,6 @@ public class EnemySO : ScriptableObject
 {
     public string enemyName;
     public EnemyCode enemyCode = EnemyCode.NoItem;
-    public List<DropRate> dropList;
+    public List<ItemDropRate> dropList;
     public List<EnemyInform> upgradeLevels;
 }

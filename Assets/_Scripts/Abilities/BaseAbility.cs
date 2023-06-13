@@ -8,7 +8,10 @@ public abstract class BaseAbility : _MonoBehaviour
 
     [SerializeField] protected float timer = 4f;
     [SerializeField] protected float delay = 5f;
-    [SerializeField] protected bool isReady = false;
+    public float Timer => timer;
+    public float Delay => delay;
+    [SerializeField] protected bool isReady = true;
+    public bool IsReady => isReady;
 
     [SerializeField] protected Abilities abilities;
     public Abilities Abilities => abilities;
@@ -24,9 +27,14 @@ public abstract class BaseAbility : _MonoBehaviour
         if (this.abilities != null) return;
         this.abilities = transform.parent.GetComponent<Abilities>();
     }
+
     protected virtual void FixedUpdate()
     {
         this.Timing();
+    }
+
+    protected virtual void Update()
+    {
     }
 
     protected virtual void Timing()
@@ -35,7 +43,6 @@ public abstract class BaseAbility : _MonoBehaviour
         this.timer += Time.fixedDeltaTime;
         if (this.timer < this.delay) return;
         this.isReady = true;
-        //this.timer = 0;
     }
 
     public virtual void Active()

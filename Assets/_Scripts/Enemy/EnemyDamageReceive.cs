@@ -39,6 +39,7 @@ public class EnemyDamageReceive : DamageReceiver
 
     protected override void OnDead()
     {
+        if (transform.parent.name == "Boss") EnemySpawner.Instance.ClearEnemyFromBoss();
         this.enemyCtrl.EnemyDespawn.DespawnObject();
         this.OnDeadFX();
         TextScore.Instance.UpdateScore();
@@ -65,7 +66,7 @@ public class EnemyDamageReceive : DamageReceiver
 
     public override void Reborn()
     {
-        int currentLvel = MapLevel.Instace.LevelCurrent;
+        int currentLvel = MapLevel.Instace.LevelCurrent-1;
         this.hpMax = this.enemyCtrl.EnemySO.upgradeLevels[currentLvel].enemyHp;
         this.enemyCtrl.CanvasHealth.HealthBar.SetMaxHealth(this.hpMax);
         base.Reborn();

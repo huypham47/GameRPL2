@@ -12,13 +12,13 @@ public class BulletSpawner : Spawner
     public virtual void SetBullet()
     {
         BulletSpawner.bullet = "Bullet_1";
-        PlayerShooting.instance.delay = 0.4f;
+        PlayerShooting.Instance.delay = 0.4f;
     }
 
     public virtual void SetBoomerang()
     {
         BulletSpawner.bullet = "Boomerang";
-        PlayerShooting.instance.delay = 3f;
+        PlayerShooting.Instance.delay = 3f;
     }
 
     protected override void Awake()

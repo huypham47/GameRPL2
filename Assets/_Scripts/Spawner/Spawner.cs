@@ -8,6 +8,7 @@ public abstract class Spawner : _MonoBehaviour
     [SerializeField] protected List<Transform> poolObjs;
 
     [SerializeField] protected Transform holder;
+    public Transform Holder => holder;
 
     [SerializeField] protected int spawnedCount = 0;
     public int SpawnedCount => spawnedCount;
@@ -101,5 +102,14 @@ public abstract class Spawner : _MonoBehaviour
     {
         int rand = Random.Range(0, this.prefabs.Count-1);
         return this.prefabs[rand];
+    }
+
+    public virtual void ClearEnemyFromBoss()
+    {
+        foreach(Transform enemy in holder)
+        {
+            if(enemy.gameObject.activeSelf == true)
+            Despawn(enemy);
+        }
     }
 }

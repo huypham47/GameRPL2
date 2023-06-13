@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerShooting : Shooting
 {
     
-    public static PlayerShooting instance;
-    
+    [SerializeField] protected static PlayerShooting instance;
+    public static PlayerShooting Instance => instance;
+
 
     protected override void Awake()
     {

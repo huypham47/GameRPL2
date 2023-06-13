@@ -19,13 +19,17 @@ MonoBehaviour:
     dropRate: 70000
     minDrop: 0
     maxDrop: 0
+  - itemSO: {fileID: 11400000, guid: 898006c99e2204fc98a21824867a533e, type: 2}
+    dropRate: 20000
+    minDrop: 0
+    maxDrop: 0
   upgradeLevels:
   - enemyHp: 3
     ememyDamage: 1
-    ememySpeed: 0
-  - enemyHp: 5
-    ememyDamage: 2
-    ememySpeed: 0
-  - enemyHp: 5
-    ememyDamage: 2
-    ememySpeed: 0
+    ememySpeed: 3
+  - enemyHp: 3.5
+    ememyDamage: 1.2
+    ememySpeed: 2.95
+  - enemyHp: 4
+    ememyDamage: 1.4
+    ememySpeed: 2.9
