@@ -60,7 +60,7 @@ public abstract class Spawner : _MonoBehaviour
         newPrefab.SetPositionAndRotation(spawnPos, rotation);
         newPrefab.gameObject.SetActive(true);
 
-        newPrefab.parent = this.holder;
+        newPrefab.SetParent(this.holder);
         this.spawnedCount++;
         return newPrefab;
     }

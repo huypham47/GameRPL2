@@ -11,8 +11,6 @@ public class InputManager : _MonoBehaviour
     [SerializeField] protected Vector2 joystickPos;
     public Vector2 JoystickPos => joystickPos;
 
-    [SerializeField] protected Button btnFlash;
-
     [SerializeField] protected bool pressed = false;
     public bool Pressed => pressed;
 
@@ -28,7 +26,6 @@ public class InputManager : _MonoBehaviour
     {
         base.LoadComponent();
         this.LoadJoystick();
-        this.LoadBtnFlash();
     }
 
     
@@ -43,20 +40,12 @@ public class InputManager : _MonoBehaviour
         this.fixedJoystick = FindObjectOfType<FixedJoystick>();
     }
 
-    protected virtual void LoadBtnFlash()
-    {
-        if (btnFlash != null) return;
-        GameObject buttonflash = GameObject.Find("BtnFlash");
-        this.btnFlash = buttonflash.GetComponent<Button>();
-        btnFlash.onClick.AddListener(TaskOnClick);
-    }
-
     protected virtual void GetJoystickPos()
     {
         this.joystickPos = new Vector2(fixedJoystick.Horizontal, fixedJoystick.Vertical);
     }
 
-    public virtual void TaskOnClick()
+    public virtual void SetPress()
     {
         this.pressed = true;
     }

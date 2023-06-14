@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AbilityWarpFromInput : AbilityWarp
 {
-
-
     protected override void ResetValue()
     {
         base.ResetValue();

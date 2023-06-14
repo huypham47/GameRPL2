@@ -20,7 +20,7 @@ MonoBehaviour:
     minDrop: 0
     maxDrop: 0
   upgradeLevels:
-  - enemyHp: 10
+  - enemyHp: 5
     ememyDamage: 2
     ememySpeed: 2.5
   - enemyHp: 15

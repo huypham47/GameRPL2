@@ -13,6 +13,9 @@ public class PlayerCtrl : _MonoBehaviour
     [SerializeField] protected AbilityCtrl abilityCtrl;
     public AbilityCtrl AbilityCtrl => abilityCtrl;
 
+    [SerializeField] protected Inventory inventory;
+    public Inventory Inventory => inventory;
+
     protected override void Awake()
     {
         base.Awake();
@@ -25,12 +28,19 @@ public class PlayerCtrl : _MonoBehaviour
         base.LoadComponent();
         this.LoadPlayerDamageReceiver();
         this.LoadAbilities();
+        this.LoadInventory();
     }
 
     protected virtual void LoadPlayerDamageReceiver()
     {
         if (this.playerDamageReceiver != null) return;
         this.playerDamageReceiver = GetComponentInChildren<PlayerDamageReceiver>();
+    }
+
+    protected virtual void LoadInventory()
+    {
+        if (this.inventory != null) return;
+        this.inventory = GetComponentInChildren<Inventory>();
     }
 
     protected virtual void LoadAbilities()
