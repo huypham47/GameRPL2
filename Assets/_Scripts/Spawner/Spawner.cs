@@ -111,5 +111,6 @@ public abstract class Spawner : _MonoBehaviour
             if(enemy.gameObject.activeSelf == true)
             Despawn(enemy);
         }
+        this.spawnedCount = 1;
     }
 }

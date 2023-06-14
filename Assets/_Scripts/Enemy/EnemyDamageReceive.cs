@@ -39,7 +39,6 @@ public class EnemyDamageReceive : DamageReceiver
 
     protected override void OnDead()
     {
-        if (transform.parent.name == "Boss") EnemySpawner.Instance.ClearEnemyFromBoss();
         this.enemyCtrl.EnemyDespawn.DespawnObject();
         this.OnDeadFX();
         TextScore.Instance.UpdateScore();

@@ -8,7 +8,7 @@ public class PlayerDamageReceiver : DamageReceiver
     [SerializeField] protected PlayerCtrl playerCtrl;
     [SerializeField] protected float timer = 0;
     [SerializeField] protected float delay = 12f;
-    [SerializeField] protected int playerHP = 10;
+    [SerializeField] protected int playerHP = 100;
     [SerializeField] protected bool canAdd = true;
 
     protected void FixedUpdate()

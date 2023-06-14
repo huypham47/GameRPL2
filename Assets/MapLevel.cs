@@ -30,6 +30,8 @@ public class MapLevel : LevelByScore
 
     public override void Leveling()
     {
+        Debug.Log("Leveling: " + TextScore.Instance.Score + " " + this.canSpawnBoss);
+        base.Leveling();
         if (!this.canSpawnBoss) return;
         if (TextScore.Instance.Score % 14 == 0)
         {
@@ -41,6 +43,6 @@ public class MapLevel : LevelByScore
             TextScore.Instance.canUpgradeScore = false;
             this.canSpawnBoss = false;
         }
-        base.Leveling();
+        
     }
 }

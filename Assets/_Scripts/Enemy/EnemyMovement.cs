@@ -16,7 +16,6 @@ public class EnemyMovement : EnemyMovementAbstract
 
     protected virtual void Moving()
     {
-        Debug.Log(targetPosition);
         this.distance = Vector3.Distance(transform.parent.position, targetPosition);
         if (this.distance < this.minDistance)
         {

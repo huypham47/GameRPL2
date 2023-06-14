@@ -36,6 +36,7 @@ public class TextScore : _MonoBehaviour
 
     public virtual void UpdateScore()
     {
+        Debug.Log("UpdateScore");
         if (!canUpgradeScore) return;
         this.score++;
         this.textScore.text = score.ToString();
