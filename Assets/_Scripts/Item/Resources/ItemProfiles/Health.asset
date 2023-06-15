@@ -16,4 +16,5 @@ MonoBehaviour:
   itemType: 1
   itemName: Health
   defaultMaxStack: 7
+  sprite: {fileID: 21300000, guid: 87e62b5b1e2834c44b0f8807023528ad, type: 3}
   upgradeLevels: []

@@ -32,6 +32,7 @@ public  class ItemUpgrade : ItemAbstract
 
         this.DeductIngredients(upgradeLevels, itemInventory.upgradeLevel);
         itemInventory.upgradeLevel++;
+        UIInventoryCtrl.Instance.UIInventory.ShowItems();
         return true;
     }
 

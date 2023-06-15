@@ -4,33 +4,37 @@ using UnityEngine;
 
 public class UIInventoryCtrl : _MonoBehaviour
 {
+    private static UIInventoryCtrl instance;
+    public static UIInventoryCtrl Instance { get => instance; }
+
+    [SerializeField] protected UIInventory inventory;
+    public UIInventory UIInventory => inventory;
+
     [SerializeField] protected InvItemSpawner invItemSpawner;
     public InvItemSpawner InvItemSpawner => invItemSpawner;
 
     [SerializeField] protected Transform content;
     public Transform Content => content;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        if (UIInventoryCtrl.instance != null) return;
+        UIInventoryCtrl.instance = this;
+    }
+
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadInvItemSpawner();
         this.LoadContent();
+        this.LoadUIInventory();
     }
 
-    protected override void Start()
+    protected virtual void LoadUIInventory()
     {
-        base.Start();
-        for (int i = 1; i < 70; i++)
-        {
-            this.SpawnItem(i);
-        }
-    }
-
-    protected virtual void SpawnItem(int i)
-    {
-        Transform uiItem = this.invItemSpawner.Spawn("UIInvItem", this.content.position, this.content.rotation);
-        uiItem.localScale = new Vector3(1, 1, 1);
-        uiItem.name = "item: " + i;
+        if (this.inventory != null) return;
+        this.inventory = GetComponentInChildren<UIInventory>();
     }
 
     protected virtual void LoadInvItemSpawner()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIInventory : _MonoBehaviour
+public class UIInventory : UIInventoryAbstract
 {
     private static UIInventory instance;
     public static UIInventory Instance => instance;
@@ -17,13 +17,7 @@ public class UIInventory : _MonoBehaviour
     protected override void Start()
     {
         base.Start();
-        this.Toggle();
-    }
-
-    private void Update()
-    {
-        Debug.Log("FixedUpdate");
-        this.ShowItems();
+        //this.Toggle();
     }
 
     public virtual void Toggle()
@@ -36,18 +30,37 @@ public class UIInventory : _MonoBehaviour
 
     public virtual void Open()
     {
-        gameObject.SetActive(true);
+        this.inventoryCtrl.gameObject.SetActive(true);
+        this.ShowItems();
     }
 
     public virtual void Close()
     {
-        gameObject.SetActive(false);
+        this.inventoryCtrl.gameObject.SetActive(false);
     }
 
-    protected virtual void ShowItems()
+    public virtual void ShowItems()
     {
         if (!isOpen) return;
-        int itemCount = PlayerCtrl.Instance.Inventory.Items.Count;
-        Debug.Log(itemCount);
+
+        this.ClearItems();
+
+        Debug.Log("Show item");
+        List<ItemInventory> items = PlayerCtrl.Instance.Inventory.Items;
+        InvItemSpawner spawner = this.inventoryCtrl.InvItemSpawner;
+
+        foreach (ItemInventory item in items)
+        {
+            Debug.Log(item.itemProfileSO.name);
+            spawner.SpawnItem(item);
+        }
+    }
+
+    protected virtual void ClearItems()
+    {
+
+        this.inventoryCtrl.InvItemSpawner.ClearItems();
+        Debug.Log("ClearItems");
+
     }
 }

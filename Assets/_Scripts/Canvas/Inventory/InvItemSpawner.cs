@@ -19,8 +19,6 @@ public class InvItemSpawner : Spawner
         InvItemSpawner.instance = this;
     }
 
-    
-
     protected override void LoadHolder()
     {
         this.LoadUIInventoryCtrl();
@@ -33,5 +31,22 @@ public class InvItemSpawner : Spawner
     {
         if (this.inventoryCtrl != null) return;
         this.inventoryCtrl = transform.parent.GetComponent<UIInventoryCtrl>();
+    }
+
+    public virtual void ClearItems()
+    {
+        foreach(Transform item in holder)
+        {
+            this.Despawn(item);
+        }
+    }
+
+    public virtual void SpawnItem(ItemInventory item)
+    {
+        Transform uiItem = this.Spawn("UIInvItem", transform.position, transform.rotation);
+        uiItem.localScale = new Vector3(1, 1, 1);
+
+        UIItemInventory itemInventory = uiItem.GetComponent<UIItemInventory>();
+        itemInventory.ShowItem(item);
     }
 }
