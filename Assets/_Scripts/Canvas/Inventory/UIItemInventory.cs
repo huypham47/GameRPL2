@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class UIItemInventory : _MonoBehaviour
 {
+    [SerializeField] protected ItemInventory itemInventory;
+    public ItemInventory ItemInventory => itemInventory;
+
     [SerializeField] protected TMP_Text itemName;
     public TMP_Text ItemName => itemName;
 
@@ -41,8 +44,9 @@ public class UIItemInventory : _MonoBehaviour
 
     public virtual void ShowItem(ItemInventory item)
     {
-        this.itemName.text = item.itemProfileSO.itemName;
-        this.itemCount.text = item.itemCount.ToString();
-        this.itemImage.sprite = item.itemProfileSO.sprite;
+        this.itemInventory = item;
+        this.itemName.text = this.itemInventory.itemProfileSO.itemName;
+        this.itemCount.text = this.itemInventory.itemCount.ToString();
+        this.itemImage.sprite = this.itemInventory.itemProfileSO.sprite;
     }
 }

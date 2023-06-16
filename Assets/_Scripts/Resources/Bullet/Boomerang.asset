@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletName: Boomerang
   damage: 3
-  speed: 300
