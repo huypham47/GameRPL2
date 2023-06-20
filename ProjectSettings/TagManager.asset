@@ -10,6 +10,8 @@ TagManager:
   - backgroundImage
   - elementText
   - amountText
+  - FxTemporaire
+  - UI
   layers:
   - Default
   - TransparentFX

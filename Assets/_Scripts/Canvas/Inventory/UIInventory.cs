@@ -19,7 +19,7 @@ public class UIInventory : UIInventoryAbstract
     protected override void Start()
     {
         base.Start();
-        //this.Toggle();
+        this.Toggle();
     }
 
     public virtual void Toggle()
@@ -50,9 +50,9 @@ public class UIInventory : UIInventoryAbstract
         List<ItemInventory> items = PlayerCtrl.Instance.Inventory.Items;
         InvItemSpawner spawner = this.inventoryCtrl.InvItemSpawner;
 
-        foreach (ItemInventory item in items)
+        for(int i=0; i< items.Count; i++)
         {
-            spawner.SpawnItem(item);
+            spawner.SpawnItem(items[i]);
         }
         this.SortItem();
     }
@@ -63,13 +63,10 @@ public class UIInventory : UIInventoryAbstract
         {
             case InventorySort.SortByName:
                 this.SortByName();
-                Debug.Log("No sort");
                 break;
             case InventorySort.SortByCount:
-                Debug.Log("SortByCount");
                 break;
             default:
-                Debug.Log("SortByName");
                 break;
         }
     }
