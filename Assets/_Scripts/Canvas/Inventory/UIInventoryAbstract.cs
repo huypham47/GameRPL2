@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIInventoryAbstract : _MonoBehaviour
+public abstract class UIInventoryAbstract : _MonoBehaviour
 {
     [SerializeField] protected UIInventoryCtrl inventoryCtrl;
-    public UIInventoryCtrl UIInventoryCtrl => inventoryCtrl;
+    public UIInventoryCtrl UIPlayerCtrl => inventoryCtrl;
 
     protected override void LoadComponent()
     {

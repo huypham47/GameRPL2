@@ -6,6 +6,6 @@ public class BtnFlash : BaseButton
 {
     protected override void OnClick()
     {
-        InputManager.Instance.SetPress();
+        BaseAbility.Instance.SetPress();
     }
 }

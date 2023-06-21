@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TextScore : _MonoBehaviour
 {
-    [SerializeField] protected int score = 0;
+    [SerializeField] protected int score = 13;
     public int Score => score;
 
-    [SerializeField] protected TMP_Text textScore;
+    [SerializeField] protected Text textScore;
 
     private static TextScore instance;
     public static TextScore Instance => instance;
@@ -31,7 +31,7 @@ public class TextScore : _MonoBehaviour
     protected virtual void LoadTextScore()
     {
         if (this.textScore != null) return;
-        this.textScore = GetComponent<TMP_Text>();
+        this.textScore = GetComponent<Text>();
     }
 
     public virtual void UpdateScore()

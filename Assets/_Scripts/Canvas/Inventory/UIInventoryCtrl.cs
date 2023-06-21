@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,9 @@ public class UIInventoryCtrl : _MonoBehaviour
     [SerializeField] protected Transform content;
     public Transform Content => content;
 
+    [SerializeField] protected CanvasGroup canvasGroup;
+    public CanvasGroup CanvasGroup => canvasGroup;
+
     protected override void Awake()
     {
         base.Awake();
@@ -29,12 +33,19 @@ public class UIInventoryCtrl : _MonoBehaviour
         this.LoadInvItemSpawner();
         this.LoadContent();
         this.LoadUIInventory();
+        this.LoadCanvasGroup();
     }
 
     protected virtual void LoadUIInventory()
     {
         if (this.inventory != null) return;
         this.inventory = GetComponentInChildren<UIInventory>();
+    }
+
+    protected virtual void LoadCanvasGroup()
+    {
+        if (this.canvasGroup != null) return;
+        this.canvasGroup = GetComponent<CanvasGroup>();
     }
 
     protected virtual void LoadInvItemSpawner()
@@ -47,5 +58,11 @@ public class UIInventoryCtrl : _MonoBehaviour
     {
         if (this.content != null) return;
         this.content = transform.Find("Scroll View").Find("Viewport").Find("Content");
+    }
+
+    public virtual void SetAlphaCanvas(int alpha)
+    {
+        this.canvasGroup.alpha = alpha;
+        this.canvasGroup.interactable = Convert.ToBoolean(alpha);
     }
 }

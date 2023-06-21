@@ -11,9 +11,6 @@ public class InputManager : _MonoBehaviour
     [SerializeField] protected Vector2 joystickPos;
     public Vector2 JoystickPos => joystickPos;
 
-    [SerializeField] protected Vector3 mouseWorldPos;
-    public Vector3 MouseWorldPos { get => mouseWorldPos; }
-
     [SerializeField] protected bool pressed = false;
     public bool Pressed => pressed;
 
@@ -22,6 +19,7 @@ public class InputManager : _MonoBehaviour
     protected override void Awake()
     {
         base.Awake();
+        if (InputManager.instance != null) return;
         InputManager.instance = this;
     }
 
@@ -35,7 +33,6 @@ public class InputManager : _MonoBehaviour
     private void FixedUpdate()
     {
         this.GetJoystickPos();
-        this.GetMousePos();
     }
 
     protected virtual void LoadJoystick()
@@ -57,10 +54,5 @@ public class InputManager : _MonoBehaviour
     public virtual void ResetPressed()
     {
         this.pressed = false;
-    }
-
-    protected virtual void GetMousePos()
-    {
-        this.mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 }

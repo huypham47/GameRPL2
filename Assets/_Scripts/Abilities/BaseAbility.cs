@@ -6,6 +6,11 @@ public abstract class BaseAbility : _MonoBehaviour
 {
     [Header("Base Ability")]
 
+    private static BaseAbility instance;
+    public static BaseAbility Instance => instance;
+
+    [SerializeField] protected bool pressed = false;
+
     [SerializeField] protected float timer = 4f;
     [SerializeField] protected float delay = 5f;
     public float Timer => timer;
@@ -15,6 +20,13 @@ public abstract class BaseAbility : _MonoBehaviour
 
     [SerializeField] protected Abilities abilities;
     public Abilities Abilities => abilities;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (BaseAbility.instance != null) return;
+        BaseAbility.instance = this;
+    }
 
     protected override void LoadComponent()
     {
@@ -49,5 +61,12 @@ public abstract class BaseAbility : _MonoBehaviour
     {
         this.isReady = false;
         this.timer = 0;
+        this.pressed = false;
+    }
+
+    public virtual void SetPress()
+    {
+        if (!this.isReady || UIInventory.Instance.IsOpen) return;
+        this.pressed = true;
     }
 }

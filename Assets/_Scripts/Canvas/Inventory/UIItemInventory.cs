@@ -7,11 +7,11 @@ public class UIItemInventory : _MonoBehaviour
     [SerializeField] protected ItemInventory itemInventory;
     public ItemInventory ItemInventory => itemInventory;
 
-    [SerializeField] protected TMP_Text itemName;
-    public TMP_Text ItemName => itemName;
+    [SerializeField] protected Text itemName;
+    public Text ItemName => itemName;
 
-    [SerializeField] protected TMP_Text itemCount;
-    public TMP_Text ItemCount => itemCount;
+    [SerializeField] protected Text itemCount;
+    public Text ItemCount => itemCount;
 
     [SerializeField] protected Image  itemImage;
     public Image ItemImage => itemImage;
@@ -27,13 +27,13 @@ public class UIItemInventory : _MonoBehaviour
     protected virtual void LoadItemName()
     {
         if (this.itemName != null) return;
-        this.itemName = transform.Find("ItemName").GetComponent<TMP_Text>();
+        this.itemName = transform.Find("ItemName").GetComponent<Text>();
     }
 
     protected virtual void LoadItemCount()
     {
         if (this.itemCount != null) return;
-        this.itemCount = transform.Find("ItemCount").GetComponent<TMP_Text>();
+        this.itemCount = transform.Find("ItemCount").GetComponent<Text>();
     }
 
     protected virtual void LoadItemImage()

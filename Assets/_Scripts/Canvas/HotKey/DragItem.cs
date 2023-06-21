@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class DragItem : _MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerUpHandler
+public class DragItem : _MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] protected RectTransform rectTransform;
     [SerializeField] protected Transform realParent;
@@ -52,6 +52,8 @@ public class DragItem : _MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        Debug.Log(UIInventory.Instance.IsOpen);
+        if (!UIInventory.Instance.IsOpen) return;
         canvasGroup.alpha = 0.6f;
         this.realParent = transform.parent;
         transform.SetParent(UIHotKeyCtrl.Instance.transform);
@@ -60,22 +62,17 @@ public class DragItem : _MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!UIInventory.Instance.IsOpen) return;
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!UIInventory.Instance.IsOpen) return;
         Debug.Log("OnEndDrag");
         canvasGroup.alpha = 1f;
         this.canvasGroup.blocksRaycasts = true;
-        Debug.Log("real Parent" + this.realParent);
-
         transform.SetParent(this.realParent);
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-
     }
 
     public virtual void SetRealParent(Transform transform)

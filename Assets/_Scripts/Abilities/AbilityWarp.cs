@@ -6,20 +6,20 @@ public class AbilityWarp : BaseAbility
 {
     [Header("AbilityWarp")]
 
-    [SerializeField] protected bool pressed = false;
     [SerializeField] protected bool isWarping = false;
     [SerializeField] protected Vector3 warpDirection;
     [SerializeField] protected float warpSpeed = 0.1f;
+
+    protected override void ResetValue()
+    {
+        base.ResetValue();
+        this.delay = 10f;
+    }
 
     protected override void Update()
     {
         base.Update();
         this.CheckWarp();
-    }
-
-    protected override void FixedUpdate()
-    {
-        base.FixedUpdate();
     }
 
     protected virtual void CheckWarp()

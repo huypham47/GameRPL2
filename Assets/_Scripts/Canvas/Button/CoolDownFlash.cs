@@ -26,9 +26,9 @@ public class CoolDownFlash : _MonoBehaviour
     public virtual void Update()
     {
         string coolDown;
-        this.timer = Mathf.Round(PlayerCtrl.Instance.AbilityCtrl.BaseAbility.Timer);
-        this.delay = PlayerCtrl.Instance.AbilityCtrl.BaseAbility.Delay;
-        if (PlayerCtrl.Instance.AbilityCtrl.BaseAbility.IsReady) coolDown = "OK";
+        this.timer = Mathf.Round(BaseAbility.Instance.Timer);
+        this.delay = BaseAbility.Instance.Delay;
+        if (BaseAbility.Instance.IsReady) coolDown = "OK";
         else coolDown = this.timer + " / " + this.delay;
         txtCoolDown.text = coolDown;
     }

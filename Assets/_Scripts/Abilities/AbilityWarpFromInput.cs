@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class AbilityWarpFromInput : AbilityWarp
 {
-    protected override void ResetValue()
-    {
-        base.ResetValue();
-        this.delay = 10f;
-    }
+    
     protected override void Update()
     {
         base.Update();

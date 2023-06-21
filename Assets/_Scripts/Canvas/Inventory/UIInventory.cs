@@ -8,11 +8,13 @@ public class UIInventory : UIInventoryAbstract
     private static UIInventory instance;
     public static UIInventory Instance => instance;
     [SerializeField] protected bool isOpen = true;
+    public bool IsOpen => isOpen;
     [SerializeField] protected InventorySort inventorySort = InventorySort.SortByName;
 
     protected override void Awake()
     {
         base.Awake();
+        if (UIInventory.instance != null) return;
         UIInventory.instance = this;
     }
 
@@ -32,13 +34,17 @@ public class UIInventory : UIInventoryAbstract
 
     public virtual void Open()
     {
-        this.inventoryCtrl.gameObject.SetActive(true);
+        RectTransform rt = this.inventoryCtrl.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(1150, 750);
+        rt.anchoredPosition = new Vector3(960, 17, 0);
+        this.inventoryCtrl.SetAlphaCanvas(1);
         this.ShowItems();
     }
 
     public virtual void Close()
     {
-        this.inventoryCtrl.gameObject.SetActive(false);
+        this.inventoryCtrl.SetAlphaCanvas(0);
+        if (UIInform.Instance.IsOpen) UIInform.Instance.Toggle();
     }
 
     public virtual void ShowItems()
