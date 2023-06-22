@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class UIPlayerAbstract : _MonoBehaviour
 {
-    [SerializeField] protected UIPlayerCtrl playerCtrl;
-    public UIPlayerCtrl UIPlayerCtrl => playerCtrl;
+    [SerializeField] protected UIPlayerCtrl uiPlayerCtrl;
+    public UIPlayerCtrl UIPlayerCtrl => uiPlayerCtrl;
 
     protected override void LoadComponent()
     {
@@ -14,7 +14,7 @@ public abstract class UIPlayerAbstract : _MonoBehaviour
     }
     protected virtual void LoadUIPlayerCtrl()
     {
-        if (this.playerCtrl != null) return;
-        this.playerCtrl = transform.parent.GetComponent<UIPlayerCtrl>();
+        if (this.uiPlayerCtrl != null) return;
+        this.uiPlayerCtrl = transform.parent.GetComponent<UIPlayerCtrl>();
     }
 }

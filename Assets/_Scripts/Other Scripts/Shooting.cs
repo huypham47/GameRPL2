@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shooting : _MonoBehaviour
 {
     [SerializeField] protected float timer = 0;
-    public float delay = 0.4f;
+    public float delay = 0.7f;
     public bool isShoot = true;
 
     private void FixedUpdate()

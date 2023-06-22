@@ -37,7 +37,7 @@ public class MapLevel : LevelByScore
             EnemySpawnerCtrl.Instance.EnemySpawnerRandom.randomLimit = 0;
 
             Vector3 pos = PlayerCtrl.Instance.transform.position;
-            pos.z += 800;
+            pos.z += 10;
             EnemySpawnerCtrl.Instance.EnemySpawner.Spawn("Boss", pos, transform.rotation);
             TextScore.Instance.canUpgradeScore = false;
             this.canSpawnBoss = false;

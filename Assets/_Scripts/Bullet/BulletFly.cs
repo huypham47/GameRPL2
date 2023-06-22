@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletFly : _MonoBehaviour
 {
-    [SerializeField] protected float moveSpeed = 300f;
+    [SerializeField] protected float moveSpeed = 8f;
     public Vector3 direction = new Vector3(0, 0, 1);
 
     [SerializeField] protected AllBulletCtrl allBulletCtrl;

@@ -45,7 +45,7 @@ public class BoomerangFly : _MonoBehaviour
 
         if (go)
         {
-            transform.parent.position = Vector3.MoveTowards(transform.parent.position, transform.position + currentTarget * 40f, Time.deltaTime * 400);
+            transform.parent.position = Vector3.MoveTowards(transform.parent.position, transform.position + currentTarget * 5f, Time.deltaTime * 4);
         }
         if (!go)
         {
@@ -56,6 +56,6 @@ public class BoomerangFly : _MonoBehaviour
 
     void MoveReturn()
     {
-        transform.parent.position = Vector3.MoveTowards(transform.parent.position, PlayerCtrl.Instance.transform.position, Time.deltaTime * 200);
+        transform.parent.position = Vector3.MoveTowards(transform.parent.position, PlayerCtrl.Instance.transform.position, Time.deltaTime * 4);
     }
 }

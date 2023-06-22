@@ -11,6 +11,9 @@ public class UIPlayerCtrl : _MonoBehaviour
     [SerializeField] protected CanvasGroup canvasGroup;
     public CanvasGroup CanvasGroup => canvasGroup;
 
+    [SerializeField] protected TextInformCtrl textInformCtrl;
+    public TextInformCtrl TextInformCtrl => textInformCtrl;
+
     protected override void Awake()
     {
         base.Awake();
@@ -22,12 +25,19 @@ public class UIPlayerCtrl : _MonoBehaviour
     {
         base.LoadComponent();
         this.LoadCanvasGroup();
+        this.LoadTextInformCtrl();
     }
 
     protected virtual void LoadCanvasGroup()
     {
         if (this.canvasGroup != null) return;
         this.canvasGroup = GetComponent<CanvasGroup>();
+    }
+
+    protected virtual void LoadTextInformCtrl()
+    {
+        if (this.textInformCtrl != null) return;
+        this.textInformCtrl = GetComponentInChildren<TextInformCtrl>();
     }
 
     public virtual void SetAlphaCanvas(int alpha)

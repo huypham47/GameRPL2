@@ -11,13 +11,13 @@ public class PlayerMove : _MonoBehaviour
     protected override void ResetValue()
     {
         base.ResetValue();
-        this.moveSpeed = 100f;
+        this.moveSpeed = 2f;
     }
 
     private void FixedUpdate()
     {
         _rigidbody.velocity = new Vector3(InputManager.Instance.JoystickPos.x * this.moveSpeed,
-                                        _rigidbody.velocity.y,
+                                        0,
                                         InputManager.Instance.JoystickPos.y * this.moveSpeed);
 
         if (InputManager.Instance.JoystickPos.x != 0 || InputManager.Instance.JoystickPos.y != 0)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DespawnByDistance : Despawn
 {
-    [SerializeField] protected float disLitmit = 1000f;
+    [SerializeField] protected float disLitmit = 50f;
     [SerializeField] protected float distance = 0f;
 
     protected override void LoadComponent()

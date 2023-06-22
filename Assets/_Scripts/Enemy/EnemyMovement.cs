@@ -6,7 +6,7 @@ public class EnemyMovement : EnemyMovementAbstract
 {
     [SerializeField] protected float speed = 0.005f;
     [SerializeField] protected float distance = 0f;
-    [SerializeField] protected float minDistance = 300f;
+    [SerializeField] protected float minDistance = 4f;
 
     protected override void FixedUpdate()
     {

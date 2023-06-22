@@ -18,6 +18,7 @@ public class ItemDropSpawner : Spawner
 
     public virtual List<ItemDropRate> Drop(List<ItemDropRate> dropLists, Vector3 pos, Quaternion rot)
     {
+        Debug.Log("Drop " + pos);
         List<ItemDropRate> dropItems = new List<ItemDropRate>();
         if (dropLists.Count < 1) return dropItems;
         dropItems = this.DropItems(dropLists);
@@ -25,7 +26,6 @@ public class ItemDropSpawner : Spawner
         foreach(ItemDropRate item in dropItems)
         {
             ItemCode itemCode = item.itemSO.itemCode;
-            pos.x += 10;
             Transform itemDrop = this.Spawn(itemCode.ToString(), pos, rot);
             if (itemDrop == null) continue;
             itemDrop.gameObject.SetActive(true);
