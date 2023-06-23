@@ -64,5 +64,6 @@ public class UIInventoryCtrl : _MonoBehaviour
     {
         this.canvasGroup.alpha = alpha;
         this.canvasGroup.interactable = Convert.ToBoolean(alpha);
+        this.canvasGroup.blocksRaycasts = Convert.ToBoolean(alpha);
     }
 }

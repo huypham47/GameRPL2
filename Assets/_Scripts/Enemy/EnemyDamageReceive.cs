@@ -50,7 +50,6 @@ public class EnemyDamageReceive : DamageReceiver
     protected virtual void OnDeadDropItem()
     {
         Vector3 dropPos = transform.position;
-        Debug.Log(dropPos);
         Quaternion dropRot = transform.rotation;
         ItemDropSpawner.Instance.Drop(this.enemyCtrl.EnemySO.dropList, dropPos, dropRot);
     }
@@ -60,7 +59,7 @@ public class EnemyDamageReceive : DamageReceiver
         string fxName = this.GetOnDeadFXName();
         Vector3 spawnPos = transform.position;
         Transform fxOnDead = FXSpawner.Instance.Spawn(fxName, spawnPos, transform.rotation);
-        fxOnDead.gameObject.SetActive(true);
+        //fxOnDead.gameObject.SetActive(true);
     }
 
     public override void Reborn()

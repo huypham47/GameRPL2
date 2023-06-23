@@ -6,9 +6,6 @@ public abstract class BaseAbility : _MonoBehaviour
 {
     [Header("Base Ability")]
 
-    private static BaseAbility instance;
-    public static BaseAbility Instance => instance;
-
     [SerializeField] protected bool pressed = false;
 
     [SerializeField] protected float timer = 4f;
@@ -20,13 +17,6 @@ public abstract class BaseAbility : _MonoBehaviour
 
     [SerializeField] protected Abilities abilities;
     public Abilities Abilities => abilities;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        if (BaseAbility.instance != null) return;
-        BaseAbility.instance = this;
-    }
 
     protected override void LoadComponent()
     {

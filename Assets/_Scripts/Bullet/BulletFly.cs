@@ -7,24 +7,23 @@ public class BulletFly : _MonoBehaviour
     [SerializeField] protected float moveSpeed = 8f;
     public Vector3 direction = new Vector3(0, 0, 1);
 
-    [SerializeField] protected AllBulletCtrl allBulletCtrl;
-    public AllBulletCtrl AllBulletCtrl => allBulletCtrl;
+    //[SerializeField] protected AllBulletCtrl allBulletCtrl;
+    //public AllBulletCtrl AllBulletCtrl => allBulletCtrl;
 
-    protected override void LoadComponent()
-    {
-        base.LoadComponent();
-        this.LoadBulletCtrl();
-    }
+    //protected override void LoadComponent()
+    //{
+    //    base.LoadComponent();
+    //    this.LoadBulletCtrl();
+    //}
 
-    protected virtual void LoadBulletCtrl()
-    {
-        if (this.allBulletCtrl != null) return;
-        this.allBulletCtrl = transform.parent.GetComponent<AllBulletCtrl>();
-    }
+    //protected virtual void LoadBulletCtrl()
+    //{
+    //    if (this.allBulletCtrl != null) return;
+    //    this.allBulletCtrl = transform.parent.GetComponent<AllBulletCtrl>();
+    //}
 
     private void Update()
     {
-
-        transform.parent.Translate(this.direction * this.moveSpeed * Time.deltaTime);
+        transform.parent.Translate(this.moveSpeed * Time.deltaTime * this.direction);
     }
 }

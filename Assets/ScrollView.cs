@@ -20,6 +20,4 @@ public class ScrollView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         Debug.Log("OnEndDrag");
     }
-
-
 }

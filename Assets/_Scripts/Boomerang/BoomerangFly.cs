@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BoomerangFly : _MonoBehaviour
 {
-    bool go = true;
-    Vector3 currentTarget;
+    [SerializeField] protected bool go = true;
+    [SerializeField] protected Vector3 currentTarget;
     [SerializeField] protected AllBulletCtrl allBulletCtrl;
     public AllBulletCtrl AllBulletCtrl => allBulletCtrl;
 

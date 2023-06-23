@@ -10,27 +10,24 @@ public class DamageSender : _MonoBehaviour
     {
         DamageReceiver damageReceiver = obj.GetComponentInChildren<DamageReceiver>();
         if (damageReceiver == null) return;
-        this.CreateImpactFX();
+        this.CreateImpactFX(FXSpawner.impactOne);
         this.Send(damageReceiver);
     }
 
-protected virtual void CreateImpactFX()
-{
-
-    string fxName = this.GetImpactFXName();
-
-    Transform fxImpact = FXSpawner.Instance.Spawn(fxName, transform.position, transform.rotation);
-    fxImpact.gameObject.SetActive(true);
-}
-
-protected virtual string GetImpactFXName()
-{
-    return FXSpawner.impactOne;
-}
-
-public virtual void Send(DamageReceiver damageReceiver)
+    protected virtual void CreateImpactFX(string fxName)
     {
-        damageReceiver.Deduct(this.damage);
+        Transform fxImpact = FXSpawner.Instance.Spawn(fxName, transform.position, transform.rotation);
+        fxImpact.gameObject.SetActive(true);
+    }
+
+    //protected virtual string GetImpactFXName()
+    //{
+    //    return FXSpawner.impactOne;
+    //}
+
+    public virtual void Send(DamageReceiver damageReceiver)
+    {
+            damageReceiver.Deduct(this.damage);
     }
 
 }

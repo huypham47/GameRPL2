@@ -25,6 +25,7 @@ public class PlayerBulletImpart : Impact
     protected override void OnTriggerEnter(Collider other)
     {
         if (other.name == "PlayerDamageReceiver") return;
+        Debug.Log("Impart" + transform.parent);
         base.OnTriggerEnter(other);
         this.allBulletCtrl.DamageSender.Send(other.transform);
     }

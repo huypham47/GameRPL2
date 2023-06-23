@@ -12,6 +12,7 @@ TagManager:
   - amountText
   - FxTemporaire
   - UI
+  - Enemies
   layers:
   - Default
   - TransparentFX

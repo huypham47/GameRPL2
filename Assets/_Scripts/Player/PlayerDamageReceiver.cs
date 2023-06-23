@@ -9,18 +9,6 @@ public class PlayerDamageReceiver : DamageReceiver
     [SerializeField] protected float timer = 0;
     [SerializeField] protected float delay = 12f;
     [SerializeField] protected int playerHP = 100;
-    [SerializeField] protected bool canAdd = true;
-
-    protected void FixedUpdate()
-    {
-        if (this.canAdd && this.hp < this.hpMax)
-        {
-            this.timer += Time.fixedDeltaTime;
-            if (this.timer < this.delay) return;
-            this.timer = 0;
-            this.Add(1);
-        }
-    }
 
     protected override void LoadComponent()
     {
@@ -37,7 +25,6 @@ public class PlayerDamageReceiver : DamageReceiver
 
     protected override void OnDead()
     {
-        //UIManager.Instance.BtnGameOver.SetActive(true);
         this.OnDeadFX();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
@@ -48,7 +35,7 @@ public class PlayerDamageReceiver : DamageReceiver
         Vector3 spawnPos = transform.position;
         spawnPos.y = 20;
         Transform fxOnDead = FXSpawner.Instance.Spawn(fxName, spawnPos, transform.rotation);
-        fxOnDead.gameObject.SetActive(true);
+        //fxOnDead.gameObject.SetActive(true);
     }
 
     public override void Reborn()
@@ -60,21 +47,13 @@ public class PlayerDamageReceiver : DamageReceiver
     public override void Deduct(float add)
     {
         base.Deduct(add);
-        this.canAdd = false;
-        StartCoroutine(CanAdd());
-        
-    }
-
-    IEnumerator CanAdd()
-    {
-        yield return new WaitForSeconds(4f);
-        canAdd = true;
-        this.timer = 0;
     }
 
     public override void Add(float add)
     {
         base.Add(add);
+       
+        Transform fxOnDead = FXSpawner.Instance.Spawn(FXSpawner.impactTrue, transform.position, transform.rotation);
     }
 
     protected virtual string GetOnDeadFXName()

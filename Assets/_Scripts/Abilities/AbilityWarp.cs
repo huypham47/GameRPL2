@@ -53,7 +53,7 @@ public class AbilityWarp : BaseAbility
     protected virtual void MoveObj()
     {
         Transform obj = PlayerCtrl.Instance.transform;
-        Vector3 newPos = obj.position + warpDirection * 100;
+        Vector3 newPos = obj.position + warpDirection * 2f;
         obj.position = newPos;
     }
 }

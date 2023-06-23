@@ -24,7 +24,6 @@ public class UIInform : UIPlayerAbstract
 
     public virtual void Toggle()
     {
-        Debug.Log("Toggle");
         this.isOpen = !this.isOpen;
         if (this.isOpen) Open();
         else this.Close();
