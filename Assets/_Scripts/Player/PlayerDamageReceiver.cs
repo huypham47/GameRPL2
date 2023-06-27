@@ -8,7 +8,6 @@ public class PlayerDamageReceiver : DamageReceiver
     [SerializeField] protected PlayerCtrl playerCtrl;
     [SerializeField] protected float timer = 0;
     [SerializeField] protected float delay = 12f;
-    [SerializeField] protected int playerHP = 100;
 
     protected override void LoadComponent()
     {
@@ -16,6 +15,12 @@ public class PlayerDamageReceiver : DamageReceiver
         this.LoadPlayerCtrl();
     }
 
+    protected override void ResetValue()
+    {
+        base.ResetValue();
+        this.hpMax = 100;
+        this.hp = 100;
+    }
 
     protected virtual void LoadPlayerCtrl()
     {
@@ -26,7 +31,8 @@ public class PlayerDamageReceiver : DamageReceiver
     protected override void OnDead()
     {
         this.OnDeadFX();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SaveManager.Instance.SaveGame();
+        SceneManager.LoadScene("Menu");
     }
 
     protected virtual void OnDeadFX()
@@ -36,12 +42,6 @@ public class PlayerDamageReceiver : DamageReceiver
         spawnPos.y = 20;
         Transform fxOnDead = FXSpawner.Instance.Spawn(fxName, spawnPos, transform.rotation);
         //fxOnDead.gameObject.SetActive(true);
-    }
-
-    public override void Reborn()
-    {
-        this.hpMax = this.playerHP;
-        base.Reborn();
     }
 
     public override void Deduct(float add)
@@ -64,5 +64,11 @@ public class PlayerDamageReceiver : DamageReceiver
     public virtual void AddMaxHP()
     {
         this.hpMax++;
+    }
+
+    public virtual void SetHP(float hp, float hpMax)
+    {
+        this.hp = hp;
+        this.hpMax = hpMax;
     }
 }

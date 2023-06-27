@@ -20,7 +20,7 @@ public class EnemyShooting : Shooting
 
     protected virtual void OnEnable()
     {
-        int currentLvel = MapLevel.Instace.LevelCurrent-1;
+        int currentLvel = MapLevel.Instance.LevelCurrent-1;
         this.delay = this.enemyCtrl.EnemySO.upgradeLevels[currentLvel].ememySpeed;
     }
 

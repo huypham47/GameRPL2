@@ -5,11 +5,19 @@ using UnityEngine;
 
 public class BossDamageReceive : EnemyDamageReceive
 {
+    [SerializeField] protected WormHole wormHole;
+
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        this.wormHole = GameObject.Find("WormHole").GetComponent<WormHole>();
+    }
+
     protected override void OnDead()
     {
         EnemySpawner.Instance.ClearEnemyFromBoss();
-        EnemySpawnerCtrl.Instance.EnemySpawnerRandom.randomLimit = 1;
         TextScore.Instance.canUpgradeScore = true;
+        this.wormHole.transform.position = transform.position;
         base.OnDead();
     }
 

@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class MapLevel : LevelByScore
 {
-    [SerializeField] private static MapLevel instace;
-    public static MapLevel Instace => instace;
+    [SerializeField] private static MapLevel instance;
+    public static MapLevel Instance => instance;
 
     [SerializeField] protected bool canSpawnBoss = true;
 
-    protected override void Start()
+    protected override void Awake()
     {
         base.Start();
-        if (MapLevel.instace != null) return;
-        MapLevel.instace = this;
-
+        if (MapLevel.instance != null) return;
+        MapLevel.instance = this;
     }
 
     public override void LevelUp()
@@ -32,7 +31,7 @@ public class MapLevel : LevelByScore
     {
         base.Leveling();
         if (!this.canSpawnBoss) return;
-        if (TextScore.Instance.Score % 14 == 0)
+        if (TextScore.Instance.Score % 15 == 14)
         {
             EnemySpawnerCtrl.Instance.EnemySpawnerRandom.randomLimit = 0;
 
@@ -42,6 +41,10 @@ public class MapLevel : LevelByScore
             TextScore.Instance.canUpgradeScore = false;
             this.canSpawnBoss = false;
         }
-        
+    }
+
+    public virtual void SetCurrentLevel(int level)
+    {
+        this.levelCurrent = level;
     }
 }

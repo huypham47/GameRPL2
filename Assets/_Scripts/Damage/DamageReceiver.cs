@@ -60,8 +60,8 @@ public abstract class DamageReceiver : _MonoBehaviour
     protected virtual void CheckIsDead()
     {
         if (!this.IsDead()) return;
-        this.OnDead();
         this.isDead = true;
+        this.OnDead();
     }
 
     protected abstract void OnDead();

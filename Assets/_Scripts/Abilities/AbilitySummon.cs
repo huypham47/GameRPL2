@@ -72,7 +72,7 @@ public class AbilitySummon : BaseAbility
 
     IEnumerator ChangeParent(Transform enemy)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         enemy.parent = EnemySpawner.Instance.Holder;
     }
 }

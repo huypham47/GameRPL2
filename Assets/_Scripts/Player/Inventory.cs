@@ -8,11 +8,6 @@ public class Inventory : _MonoBehaviour
     [SerializeField] protected List<ItemInventory> items;
     public List<ItemInventory> Items => items;
 
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     public virtual bool AddItem(ItemInventory itemInventory)
     {
         int addCount = itemInventory.itemCount;
@@ -171,5 +166,13 @@ public class Inventory : _MonoBehaviour
             itemInventory.itemCount -= deduct;
             if (itemInventory.itemCount == 0) this.items.RemoveAt(i);
         }
+    }
+
+    public virtual void InventoryFromJson(string jsonString)
+    {
+        Debug.Log("InventoryFromJson");
+        InventoryData obj = JsonUtility.FromJson<InventoryData>(jsonString);
+        this.maxSlot = obj.maxSlot;
+        this.items = obj.items;
     }
 }

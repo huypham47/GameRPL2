@@ -15,11 +15,6 @@ public class GameManager : _MonoBehaviour
         GameManager.instance = this;
     }
 
-    public virtual void GameOver()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
     public virtual void TogglePause()
     {
         this.isPause = !this.isPause;
@@ -30,6 +25,7 @@ public class GameManager : _MonoBehaviour
     public virtual void Pause()
     {
         Time.timeScale = 0;
+
     }
 
     public virtual void Continue()
