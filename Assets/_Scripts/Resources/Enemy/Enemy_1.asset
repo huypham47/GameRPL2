@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyCode: 0
   dropList:
   - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
-    dropRate: 70000
+    dropRate: 100000
     minDrop: 0
     maxDrop: 0
   - itemSO: {fileID: 11400000, guid: 898006c99e2204fc98a21824867a533e, type: 2}

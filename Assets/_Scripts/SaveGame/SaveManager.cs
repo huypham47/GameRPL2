@@ -17,7 +17,6 @@ public class SaveManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(SceneManager.GetActiveScene().buildIndex);
         this.LoadSaveGame();
     }
 
@@ -32,15 +31,21 @@ public class SaveManager : MonoBehaviour
         string playerName = "Player";
         if (StateGameCtrl.isNewGame || PlayerCtrl.Instance.PlayerDamageReceiver.Isdead)
         {
+            Debug.Log(StateGameCtrl.isNewGame + " " + PlayerCtrl.Instance.PlayerDamageReceiver.Isdead);
             inventoryName = "Inventory_Default";
             playerName = "Player_Default";
-
+            StateGameCtrl.isNewGame = false;
         }
         string jsonInventory = SaveSystem.GetString(inventoryName);
         PlayerCtrl.Instance.Inventory.InventoryFromJson(jsonInventory);
 
         string jsonPlayer = SaveSystem.GetString(playerName);
         PlayerData playerData = this.PlayerFromJson(jsonPlayer);
+        if (StateGameCtrl.nextLevel)
+        {
+            playerData.playerPos = Vector3.zero;
+            StateGameCtrl.nextLevel = false;
+        }
         Player.Instance.SetData(playerData);
     }
 

@@ -170,7 +170,6 @@ public class Inventory : _MonoBehaviour
 
     public virtual void InventoryFromJson(string jsonString)
     {
-        Debug.Log("InventoryFromJson");
         InventoryData obj = JsonUtility.FromJson<InventoryData>(jsonString);
         this.maxSlot = obj.maxSlot;
         this.items = obj.items;

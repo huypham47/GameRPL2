@@ -16,6 +16,12 @@ public class PlayerCtrl : _MonoBehaviour
     [SerializeField] protected Inventory inventory;
     public Inventory Inventory => inventory;
 
+    [SerializeField] protected PlayerSO playerSO;
+    public PlayerSO PlayerSO => playerSO;
+
+    [SerializeField] protected AnimationEvents animationEvent;
+    public AnimationEvents AnimationEvent => animationEvent;
+
     protected override void Awake()
     {
         base.Awake();
@@ -29,12 +35,27 @@ public class PlayerCtrl : _MonoBehaviour
         this.LoadPlayerDamageReceiver();
         this.LoadAbilities();
         this.LoadInventory();
+        this.LoadPlayerSO();
+        this.LoadAnimationEvent();
     }
 
     protected virtual void LoadPlayerDamageReceiver()
     {
         if (this.playerDamageReceiver != null) return;
         this.playerDamageReceiver = GetComponentInChildren<PlayerDamageReceiver>();
+    }
+
+    protected virtual void LoadAnimationEvent()
+    {
+        if (this.animationEvent != null) return;
+        this.animationEvent = GetComponentInChildren<AnimationEvents>();
+    }
+
+    protected virtual void LoadPlayerSO()
+    {
+        if (this.playerSO != null) return;
+        string resPath = "Player/" + transform.name;
+        this.playerSO = Resources.Load<PlayerSO>(resPath);
     }
 
     protected virtual void LoadInventory()

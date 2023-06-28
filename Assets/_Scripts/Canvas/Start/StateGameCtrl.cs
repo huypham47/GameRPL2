@@ -5,4 +5,5 @@ using UnityEngine;
 public class StateGameCtrl : MonoBehaviour
 {
     public static bool isNewGame = false;
+    public static bool nextLevel = false;
 }
