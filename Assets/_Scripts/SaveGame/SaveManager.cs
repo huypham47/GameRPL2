@@ -29,9 +29,8 @@ public class SaveManager : MonoBehaviour
     {
         string inventoryName = "Inventory";
         string playerName = "Player";
-        if (StateGameCtrl.isNewGame || PlayerCtrl.Instance.PlayerDamageReceiver.Isdead)
+        if (StateGameCtrl.isNewGame)
         {
-            Debug.Log(StateGameCtrl.isNewGame + " " + PlayerCtrl.Instance.PlayerDamageReceiver.Isdead);
             inventoryName = "Inventory_Default";
             playerName = "Player_Default";
             StateGameCtrl.isNewGame = false;

@@ -13,49 +13,92 @@ MonoBehaviour:
   m_Name: Enemy_2
   m_EditorClassIdentifier: 
   enemyName: Enemy_2
-  enemyCode: 1
-  dropList:
-  - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
-    dropRate: 100000
-    minDrop: 0
-    maxDrop: 0
+  enemyCode: 2
   upgradeLevels:
   - enemyHp: 1
     ememyDamage: 1.2
     ememySpeed: 2.9
+    dropList:
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 100000
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 898006c99e2204fc98a21824867a533e, type: 2}
+      dropRate: 100000
+      minDrop: 0
+      maxDrop: 0
   - enemyHp: 5.5
     ememyDamage: 1.4
     ememySpeed: 2.85
+    dropList:
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 100000
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 898006c99e2204fc98a21824867a533e, type: 2}
+      dropRate: 100000
+      minDrop: 0
+      maxDrop: 0
   - enemyHp: 6
     ememyDamage: 1.6
     ememySpeed: 2.8
+    dropList:
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 100000
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 898006c99e2204fc98a21824867a533e, type: 2}
+      dropRate: 100000
+      minDrop: 0
+      maxDrop: 0
   - enemyHp: 6
     ememyDamage: 1.6
     ememySpeed: 2.8
+    dropList:
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 100000
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 898006c99e2204fc98a21824867a533e, type: 2}
+      dropRate: 100000
+      minDrop: 0
+      maxDrop: 0
   - enemyHp: 6
     ememyDamage: 1.6
     ememySpeed: 2.8
+    dropList: []
   - enemyHp: 6
     ememyDamage: 1.6
     ememySpeed: 2.8
+    dropList: []
   - enemyHp: 6
     ememyDamage: 1.6
     ememySpeed: 2.8
+    dropList: []
   - enemyHp: 6
     ememyDamage: 1.6
     ememySpeed: 2.8
+    dropList: []
   - enemyHp: 6
     ememyDamage: 1.6
     ememySpeed: 2.8
+    dropList: []
   - enemyHp: 6
     ememyDamage: 1.6
     ememySpeed: 2.8
+    dropList: []
   - enemyHp: 6
     ememyDamage: 1.6
     ememySpeed: 2.8
+    dropList: []
   - enemyHp: 6
     ememyDamage: 1.6
     ememySpeed: 2.8
+    dropList: []
   - enemyHp: 6
     ememyDamage: 1.6
     ememySpeed: 2.8
+    dropList: []
+  walkSteps:
+  - {fileID: 8300000, guid: 2c9fefe00a4f04846a5998eb055ab38a, type: 3}
+  punch: {fileID: 8300000, guid: d8ef249a9161c47fbb3a351d1d64407e, type: 3}

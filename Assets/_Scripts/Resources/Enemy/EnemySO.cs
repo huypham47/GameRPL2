@@ -7,6 +7,13 @@ public class EnemySO : ScriptableObject
 {
     public string enemyName;
     public EnemyCode enemyCode = EnemyCode.NoItem;
-    public List<ItemDropRate> dropList;
     public List<EnemyInform> upgradeLevels;
+    public List<AudioClip> walkSteps;
+    public AudioClip punch;
+
+    public virtual AudioClip WalkStep()
+    {
+        int rand = Random.Range(0, this.walkSteps.Count);
+        return this.walkSteps[rand];
+    }
 }

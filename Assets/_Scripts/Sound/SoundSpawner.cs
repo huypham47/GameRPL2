@@ -19,7 +19,6 @@ public class SoundSpawner : Spawner
 
     public virtual AudioSource PlayEffect(AudioClip audioClip, Vector3 pos, Quaternion rot)
     {
-        Debug.Log("PlayEffect");
         AudioSource audioSource = this.Play(SoundSpawner.EFFECT_NAME, audioClip, pos, rot);
         //SoundManager.Instance.AddEffect(audioSource);
         return audioSource;
@@ -34,7 +33,6 @@ public class SoundSpawner : Spawner
 
     public virtual AudioSource Play(string audioName, AudioClip audioClip, Vector3 pos, Quaternion rot)
     {
-        Debug.Log("audioName" + audioName);
         Transform audioObject = this.Spawn(audioName, pos, rot);
         AudioSource audioSource = audioObject.GetComponent<AudioSource>();
         audioSource.clip = audioClip;

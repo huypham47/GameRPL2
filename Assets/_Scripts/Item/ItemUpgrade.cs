@@ -5,17 +5,6 @@ using UnityEngine;
 public  class ItemUpgrade : ItemAbstract
 {
     [SerializeField] protected int maxLevel = 9;
-    protected override void Start()
-    {
-        Invoke(nameof(Test),1f);
-        Invoke(nameof(Test), 2f);
-        Invoke(nameof(Test), 3f);
-    }
-
-    protected virtual void Test()
-    {
-        if (this.UpgradeItem(0)) PlayerCtrl.Instance.PlayerDamageReceiver.AddMaxHP();
-    }
 
     public virtual bool UpgradeItem(int itemIndex)
     {
@@ -38,6 +27,7 @@ public  class ItemUpgrade : ItemAbstract
 
     protected virtual bool ItemUpgradeable(List<ItemRecipe> upgradeLevels)
     {
+        Debug.Log("ItemUpgradeable");    
         if (upgradeLevels.Count == 0) return false;
         return true; 
     }

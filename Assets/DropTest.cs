@@ -18,8 +18,8 @@ public class DropTest : MonoBehaviour
     {
         Vector3 dropPos = transform.position;
         Quaternion dropRot = transform.rotation;
-
-        List<ItemDropRate> itemDropRates =  ItemDropSpawner.Instance.Drop(this.enemyCtrl.EnemySO.dropList, dropPos, dropRot);
+        int currentLvel = MapLevel.Instance.LevelCurrent - 1;
+        List<ItemDropRate> itemDropRates = ItemDropSpawner.Instance.Drop(this.enemyCtrl.EnemySO.upgradeLevels[currentLvel].dropList, dropPos, dropRot);
         dropCount++;
         ItemDropCount itemDropCount;
         foreach (ItemDropRate itemDropRate in itemDropRates)

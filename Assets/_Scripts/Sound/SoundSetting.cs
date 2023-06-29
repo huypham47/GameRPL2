@@ -28,22 +28,21 @@ public class SoundSetting : _MonoBehaviour
     public void SetAllVolume()
     {
         float volume = allSlider.value;
-        audioMixer.SetFloat("Master",volume);
+        audioMixer.SetFloat("Master",Mathf.Log10(volume)*20);
         PlayerPrefs.SetFloat("AllVolume", volume);
-        Debug.Log("SetAllVolume");
     }
 
     public void SetMusicVolume()
     {
         float volume = musicSlider.value;
-        audioMixer.SetFloat("Music", volume);
+        audioMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("MusicVolume", volume);
     }
 
     public void SetEffectVolume()
     {
         float volume = effectSlider.value;
-        audioMixer.SetFloat("Effect", volume);
+        audioMixer.SetFloat("Effect", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("EffectVolume", volume);
     }
 

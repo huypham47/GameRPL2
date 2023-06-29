@@ -19,13 +19,13 @@ public class MainMenu : _MonoBehaviour
     public void PlayGame()
     {
         StateGameCtrl.isNewGame = true;
-        SceneManager.LoadScene("Game");
+        AsyncLoader.Instance.LoadLevel("game");
     }
 
     public void Continue()
     {
         StateGameCtrl.isNewGame = false;
-        SceneManager.LoadScene("Game");
+        AsyncLoader.Instance.LoadLevel("game");
     }
 
     public void Quit()

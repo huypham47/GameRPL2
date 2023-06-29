@@ -26,6 +26,8 @@ public class EnemyBulletImpart : Impact
         {
             base.OnTriggerEnter(other);
             this.allBulletCtrl.DamageSender.Send(other.transform);
+            AudioClip audioClip = this.allBulletCtrl.BulletSO.bloodSplat;
+            SoundSpawner.Instance.PlayEffect(audioClip, transform.position, transform.rotation);
         }
         
     } 

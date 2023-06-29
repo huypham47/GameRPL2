@@ -27,5 +27,7 @@ public class EnemyShooting : Shooting
     protected override void SpawnBullet(Vector3 spawnPos, Quaternion rotation)
     {
         Transform newBullet = BulletSpawner.Instance.Spawn("Bullet_3", spawnPos, rotation);
+        AudioClip audioClip = this.enemyCtrl.EnemySO.punch;
+        SoundSpawner.Instance.PlayEffect(audioClip, transform.position, transform.rotation);
     }
 }

@@ -7,6 +7,7 @@ public class BulletSO : ScriptableObject
 {
     public string bulletName;
     public float damage;
+    public AudioClip bloodSplat;
 
     public void DamageUpgrade(float add)
     {

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletName: Bullet_3
   damage: 1.2
+  bloodSplat: {fileID: 8300000, guid: 733453795f421486ab81cf4ab06963da, type: 3}

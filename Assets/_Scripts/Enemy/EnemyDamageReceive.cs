@@ -49,9 +49,10 @@ public class EnemyDamageReceive : DamageReceiver
 
     protected virtual void OnDeadDropItem()
     {
+        int currentLvel = MapLevel.Instance.LevelCurrent - 1;
         Vector3 dropPos = transform.position;
         Quaternion dropRot = transform.rotation;
-        ItemDropSpawner.Instance.Drop(this.enemyCtrl.EnemySO.dropList, dropPos, dropRot);
+        ItemDropSpawner.Instance.Drop(this.enemyCtrl.EnemySO.upgradeLevels[currentLvel].dropList, dropPos, dropRot);
     }
 
     protected virtual void OnDeadFX()

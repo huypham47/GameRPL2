@@ -12,10 +12,9 @@ public class WormHole : MonoBehaviour
         if (other.name == "PlayerDamageReceiver")
         {
             SaveManager.Instance.SaveGame();
-            EnemySpawnerCtrl.Instance.EnemySpawnerRandom.randomLimit = 1;
             transform.position = new Vector3(0, 20, 0);
-            StateGameCtrl.nextLevel = true;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            UILevel.Instance.Toggle();
+            
         }
     }
 }

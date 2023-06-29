@@ -44,7 +44,9 @@ public class UIItemInventory : _MonoBehaviour
 
     public virtual void ShowItem(ItemInventory item)
     {
+        Debug.Log("ShowItem");
         this.itemInventory = item;
+        Debug.Log(this.itemInventory.itemProfileSO.itemName + " " + this.itemInventory.itemCount.ToString() + " " + this.itemInventory.itemProfileSO.sprite);
         this.itemName.text = this.itemInventory.itemProfileSO.itemName;
         this.itemCount.text = this.itemInventory.itemCount.ToString();
         this.itemImage.sprite = this.itemInventory.itemProfileSO.sprite;
