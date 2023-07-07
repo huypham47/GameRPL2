@@ -18,7 +18,14 @@ public class BossDamageReceive : EnemyDamageReceive
         EnemySpawner.Instance.ClearEnemyFromBoss();
         TextScore.Instance.canUpgradeScore = true;
         this.wormHole.transform.position = transform.position;
+        UIReward.Instance.Toggle();
         base.OnDead();
+    }
+
+    public override void Reborn()
+    {
+        base.Reborn();
+        UIReward.Instance.ShowReward();
     }
 
 }

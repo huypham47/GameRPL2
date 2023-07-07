@@ -51,4 +51,11 @@ public class UIItemInventory : _MonoBehaviour
         this.itemCount.text = this.itemInventory.itemCount.ToString();
         this.itemImage.sprite = this.itemInventory.itemProfileSO.sprite;
     }
+
+    public virtual void ShowItem(ItemDropRate item)
+    {
+        this.itemName.text = item.itemSO.itemName;
+        this.itemCount.text = "1";
+        this.itemImage.sprite = item.itemSO.sprite;
+    }
 }
