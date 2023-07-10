@@ -52,5 +52,7 @@ public class SoundSetting : _MonoBehaviour
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         effectSlider.value = PlayerPrefs.GetFloat("EffectVolume");
         SetAllVolume();
+        SetMusicVolume();
+        SetEffectVolume();
     }
 }

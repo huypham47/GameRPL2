@@ -23,7 +23,7 @@ public class Player : _MonoBehaviour
     public virtual void LoadData()
     {
         this.levelCurrent = MapLevel.Instance.LevelCurrent;
-        this.score = TextScore.Instance.Score;
+        this.score = TextScore.Instance.Score - 1;
         this.hp = PlayerCtrl.Instance.PlayerDamageReceiver.Hp;
         this.hpMax = PlayerCtrl.Instance.PlayerDamageReceiver.HpMax;
         this.playerPos = transform.position;

@@ -40,6 +40,7 @@ public class SaveManager : MonoBehaviour
 
         string jsonPlayer = SaveSystem.GetString(playerName);
         PlayerData playerData = this.PlayerFromJson(jsonPlayer);
+        Debug.Log(playerData.score);
         if (StateGameCtrl.nextLevel)
         {
             playerData.playerPos = Vector3.zero;
@@ -51,13 +52,11 @@ public class SaveManager : MonoBehaviour
     public virtual void SaveGame()
     {
         Player.Instance.LoadData();
-        Debug.Log(Player.Instance.score);
         string jsonInventory = JsonUtility.ToJson(PlayerCtrl.Instance.Inventory);
         SaveSystem.SetString("Inventory", jsonInventory);
 
         string jsonPlayer = JsonUtility.ToJson(Player.Instance);
         SaveSystem.SetString("Player", jsonPlayer);
-        Debug.Log(jsonPlayer);
     }
 
     public virtual PlayerData PlayerFromJson(string jsonString)
