@@ -40,7 +40,6 @@ public class SaveManager : MonoBehaviour
 
         string jsonPlayer = SaveSystem.GetString(playerName);
         PlayerData playerData = this.PlayerFromJson(jsonPlayer);
-        Debug.Log(playerData.score);
         if (StateGameCtrl.nextLevel)
         {
             playerData.playerPos = Vector3.zero;
