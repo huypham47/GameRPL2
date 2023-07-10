@@ -50,7 +50,59 @@ MonoBehaviour:
   - enemyHp: 15
     ememyDamage: 2.5
     ememySpeed: 2.4
-    dropList: []
+    dropList:
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
+    - itemSO: {fileID: 11400000, guid: 8aaf74663dd424faab48787ce04a2bde, type: 2}
+      dropRate: 0
+      minDrop: 0
+      maxDrop: 0
   - enemyHp: 20
     ememyDamage: 3
     ememySpeed: 2.6

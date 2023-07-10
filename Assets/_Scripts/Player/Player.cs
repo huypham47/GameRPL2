@@ -8,7 +8,7 @@ public class Player : _MonoBehaviour
     public static Player Instance { get => instance; }
 
     [SerializeField] protected int levelCurrent;
-    [SerializeField] protected int score;
+    public int score;
     [SerializeField] protected float hp;
     [SerializeField] protected float hpMax;
     [SerializeField] protected Vector3 playerPos;

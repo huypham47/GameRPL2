@@ -51,7 +51,7 @@ public class SaveManager : MonoBehaviour
     public virtual void SaveGame()
     {
         Player.Instance.LoadData();
-
+        Debug.Log(Player.Instance.score);
         string jsonInventory = JsonUtility.ToJson(PlayerCtrl.Instance.Inventory);
         SaveSystem.SetString("Inventory", jsonInventory);
 

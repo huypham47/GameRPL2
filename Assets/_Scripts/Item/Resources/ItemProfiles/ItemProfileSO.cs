@@ -23,4 +23,16 @@ public class ItemProfileSO : ScriptableObject
 
         return null;
     }
+
+    public static ItemProfileSO FindByItemName(string itemName)
+    {
+        var profiles = Resources.LoadAll("ItemProfiles", typeof(ItemProfileSO));
+        foreach (ItemProfileSO profile in profiles)
+        {
+            if (profile.itemName != itemName) continue;
+            return profile;
+        }
+
+        return null;
+    }
 }

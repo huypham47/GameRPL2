@@ -21,7 +21,7 @@ public class CaseScroll : MonoBehaviour
         isScrolling = true;
 
         if(cells.Count == 0)
-            for(int i = 0; i < 50; i++)
+            for(int i = 0; i < 20; i++)
             {
                 cells.Add(Instantiate(prefab, transform).GetComponentInChildren<CaseCell>());
             }

@@ -44,10 +44,8 @@ public class UIReward : _MonoBehaviour
     public virtual void Open()
     {
         this.rewardCtrl.SetAlphaCanvas(1);
-//        this.rewardCtrl.ScrollContent.ResizeContent();
- //       this.rewardCtrl.AutoScroll.StartCorou();
-       // GameManager.Instance.Pause();
-
+        this.rewardCtrl.ScrollContent.ResizeContent();
+        this.rewardCtrl.AutoScroll.StartCorou();
     }
 
     public virtual void Close()

@@ -44,9 +44,7 @@ public class UIItemInventory : _MonoBehaviour
 
     public virtual void ShowItem(ItemInventory item)
     {
-        Debug.Log("ShowItem");
         this.itemInventory = item;
-        Debug.Log(this.itemInventory.itemProfileSO.itemName + " " + this.itemInventory.itemCount.ToString() + " " + this.itemInventory.itemProfileSO.sprite);
         this.itemName.text = this.itemInventory.itemProfileSO.itemName;
         this.itemCount.text = this.itemInventory.itemCount.ToString();
         this.itemImage.sprite = this.itemInventory.itemProfileSO.sprite;
@@ -55,7 +53,7 @@ public class UIItemInventory : _MonoBehaviour
     public virtual void ShowItem(ItemDropRate item)
     {
         this.itemName.text = item.itemSO.itemName;
-        this.itemCount.text = "1";
+        this.itemCount.text = Random.Range(10,20).ToString();
         this.itemImage.sprite = item.itemSO.sprite;
     }
 }
