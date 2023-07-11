@@ -22,6 +22,9 @@ public class PlayerCtrl : _MonoBehaviour
     [SerializeField] protected AnimationEvents animationEvent;
     public AnimationEvents AnimationEvent => animationEvent;
 
+    [SerializeField] protected SkinnedMeshRenderer meshCharacter;
+    public SkinnedMeshRenderer MeshCharacter => meshCharacter;
+
     protected override void Awake()
     {
         base.Awake();
@@ -37,6 +40,13 @@ public class PlayerCtrl : _MonoBehaviour
         this.LoadInventory();
         this.LoadPlayerSO();
         this.LoadAnimationEvent();
+        this.LoadMeshCharacter();
+    }
+
+    protected virtual void LoadMeshCharacter()
+    {
+        if (this.meshCharacter != null) return;
+        this.meshCharacter = GameObject.Find("CharacterSkin").GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     protected virtual void LoadPlayerDamageReceiver()
@@ -68,5 +78,14 @@ public class PlayerCtrl : _MonoBehaviour
     {
         if (this.abilityCtrl != null) return;
         this.abilityCtrl = GetComponentInChildren<AbilityCtrl>();
+    }
+
+    protected override void Start()
+    {
+        string character = PlayerPrefs.GetString("Character");
+        ItemProfileSO item = ItemProfileSO.FindByItemName(character);
+        Debug.Log(item);
+        this.meshCharacter.sharedMesh = item.mesh;
+        Debug.Log(item.mesh);
     }
 }

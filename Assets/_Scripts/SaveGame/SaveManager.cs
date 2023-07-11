@@ -36,6 +36,7 @@ public class SaveManager : MonoBehaviour
             StateGameCtrl.isNewGame = false;
         }
         string jsonInventory = SaveSystem.GetString(inventoryName);
+        Debug.Log(jsonInventory);
         PlayerCtrl.Instance.Inventory.InventoryFromJson(jsonInventory);
 
         string jsonPlayer = SaveSystem.GetString(playerName);
@@ -46,6 +47,10 @@ public class SaveManager : MonoBehaviour
             StateGameCtrl.nextLevel = false;
         }
         Player.Instance.SetData(playerData);
+
+        //string jsonInventory = SaveSystem.GetString("character");
+        //Debug.Log(jsonInventory);
+        //Character.Instance.InventoryFromJson(jsonInventory);
     }
 
     public virtual void SaveGame()
@@ -62,5 +67,12 @@ public class SaveManager : MonoBehaviour
     {
         PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonString);
         return playerData;
+    }
+
+    public virtual void Savecharacter()
+    {
+        string jsonPlayer = JsonUtility.ToJson(Character.Instance);
+        SaveSystem.SetString("character", jsonPlayer);
+        Debug.Log(jsonPlayer);
     }
 }

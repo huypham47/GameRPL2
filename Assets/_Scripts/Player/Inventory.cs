@@ -10,12 +10,13 @@ public class Inventory : _MonoBehaviour
 
     public virtual bool AddItem(ItemInventory itemInventory)
     {
+        Debug.Log(itemInventory.itemProfileSO);
         int addCount = itemInventory.itemCount;
         ItemProfileSO itemProfileSO = itemInventory.itemProfileSO;
         ItemCode itemCode = itemProfileSO.itemCode;
         ItemType itemType = itemProfileSO.itemType;
 
-        if (itemType == ItemType.Equiment) return AddEquipment(itemInventory);
+        if (itemType == ItemType.Equiment || itemType == ItemType.Clothing) return AddEquipment(itemInventory);
         return AddItem(itemCode, addCount);
     }
 

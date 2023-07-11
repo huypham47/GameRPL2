@@ -7,6 +7,12 @@ public enum ItemCode
     Health = 1,
     AmmoBox = 2,
     MaxHP = 3,
+    Raincoat = 4,
+    Adventure = 5,
+    Alien = 6,
+    Cardboard = 7,
+    CargoShorts = 8,
+    Cowboy = 9,
 }
 
 public class ItemCodeParse

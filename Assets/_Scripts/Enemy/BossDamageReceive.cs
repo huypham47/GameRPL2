@@ -25,7 +25,7 @@ public class BossDamageReceive : EnemyDamageReceive
     public override void Reborn()
     {
         base.Reborn();
-        UIReward.Instance.ShowReward();
+        UIReward.Instance.ShowReward(this.enemyCtrl);
     }
 
 }

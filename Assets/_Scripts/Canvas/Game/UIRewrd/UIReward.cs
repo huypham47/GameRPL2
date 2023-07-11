@@ -54,14 +54,14 @@ public class UIReward : _MonoBehaviour
         GameManager.Instance.Continue();
     }
 
-    public virtual void ShowReward()
+    public virtual void ShowReward(EnemyCtrl enemyCtrl)
     {
-        EnemyCtrl enemyCtrl = GameObject.Find("Boss").GetComponent<EnemyCtrl>();
         List<ItemDropRate> items = enemyCtrl.EnemySO.upgradeLevels[MapLevel.Instance.LevelCurrent-1].dropList;
         RewardSpawner spawner = this.rewardCtrl.RewardSpawner;
-
+        if (items.Count < 1) return;
         for (int i = 0; i < items.Count; i++)
         {
+            Debug.Log(i);
             spawner.SpawnItem(items[i]);
         }
     }

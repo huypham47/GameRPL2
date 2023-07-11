@@ -53,7 +53,15 @@ public class UIItemInventory : _MonoBehaviour
     public virtual void ShowItem(ItemDropRate item)
     {
         this.itemName.text = item.itemSO.itemName;
-        this.itemCount.text = Random.Range(10,20).ToString();
+        if (item.itemSO.itemType == ItemType.Clothing) this.itemCount.text = "1";
+        else this.itemCount.text = Random.Range(10,20).ToString();
         this.itemImage.sprite = item.itemSO.sprite;
+    }
+
+    public virtual void ShowItem(ItemProfileSO item)
+    {
+        this.itemName.text = item.itemName;
+        this.itemCount.text = "";
+        this.itemImage.sprite = item.sprite;
     }
 }

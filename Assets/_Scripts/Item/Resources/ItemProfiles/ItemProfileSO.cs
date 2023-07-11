@@ -11,6 +11,7 @@ public class ItemProfileSO : ScriptableObject
     public int defaultMaxStack = 7;
     public Sprite sprite;
     public List<ItemRecipe> upgradeLevels;
+    public Mesh mesh;
 
     public static ItemProfileSO FindByItemCode(ItemCode itemCode)
     {

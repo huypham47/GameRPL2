@@ -47,4 +47,13 @@ public class TextScore : _MonoBehaviour
         this.score = score;
         this.textScore.text = score.ToString();
     }
+
+    //public int avgFrameRate;
+    //private void Update()
+    //{
+    //    float current = 0;
+    //    current = Time.frameCount / Time.time;
+    //    avgFrameRate = (int)current;
+    //    this.textScore.text = avgFrameRate.ToString() + " FPS";
+    //}
 }
