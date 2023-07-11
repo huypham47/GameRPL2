@@ -55,7 +55,7 @@ public class TextInformCtrl : _MonoBehaviour
     public virtual void SetText()
     {
         this.txtHP.text = "Health Point: " + PlayerCtrl.Instance.PlayerDamageReceiver.Hp + " / " + PlayerCtrl.Instance.PlayerDamageReceiver.HpMax;
-        this.txtHPLevel.text = "HP Level: " + PlayerCtrl.Instance.Inventory.Items[0].upgradeLevel;
+        //this.txtHPLevel.text = "HP Level: " + PlayerCtrl.Instance.Inventory.Items[0].upgradeLevel;
         //this.txtDamage.text = "Damage" 
         //this.txtHP.text = PlayerCtrl.Instance.PlayerDamageReceiver.Hp + " / " + PlayerCtrl.Instance.PlayerDamageReceiver.HpMax;
         this.txtMapLevel.text = "Map Level: " + MapLevel.Instance.LevelCurrent;

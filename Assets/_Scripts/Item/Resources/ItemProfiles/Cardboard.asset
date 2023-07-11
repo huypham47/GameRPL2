@@ -16,6 +16,6 @@ MonoBehaviour:
   itemType: 3
   itemName: Cardboard
   defaultMaxStack: 1
-  sprite: {fileID: 21300000, guid: 03c59d8dc4bca4dc09a9118259b7508c, type: 3}
+  sprite: {fileID: 21300000, guid: 21fa3e9c196c04d4bacc3750ef618820, type: 3}
   upgradeLevels: []
-  mesh: {fileID: 4300004, guid: a890656eebef5d94ab6c86843cebd735, type: 3}
+  mesh: {fileID: 4300168, guid: a890656eebef5d94ab6c86843cebd735, type: 3}

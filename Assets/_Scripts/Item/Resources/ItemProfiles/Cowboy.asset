@@ -18,4 +18,4 @@ MonoBehaviour:
   defaultMaxStack: 1
   sprite: {fileID: 21300000, guid: 03c59d8dc4bca4dc09a9118259b7508c, type: 3}
   upgradeLevels: []
-  mesh: {fileID: 4300004, guid: a890656eebef5d94ab6c86843cebd735, type: 3}
+  mesh: {fileID: 4300172, guid: a890656eebef5d94ab6c86843cebd735, type: 3}
