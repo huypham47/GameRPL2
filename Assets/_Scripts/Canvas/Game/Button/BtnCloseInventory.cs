@@ -6,7 +6,6 @@ public class BtnCloseInventory : BaseButton
 {
     protected override void OnClick()
     {
-        Debug.Log("on click");
         UIInventory.Instance.Toggle();
     }
 }

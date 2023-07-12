@@ -61,7 +61,6 @@ public class UIReward : _MonoBehaviour
         if (items.Count < 1) return;
         for (int i = 0; i < items.Count; i++)
         {
-            Debug.Log(i);
             spawner.SpawnItem(items[i]);
         }
     }
