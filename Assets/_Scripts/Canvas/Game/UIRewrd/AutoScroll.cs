@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AutoScroll : _MonoBehaviour
@@ -41,18 +40,16 @@ public class AutoScroll : _MonoBehaviour
 
         itemInventory.itemProfileSO = ItemProfileSO.FindByItemName(uIItemInventory.ItemName.text.ToString());
         itemInventory.itemCount = Int32.Parse(uIItemInventory.ItemCount.text);
-        Debug.Log(uIItemInventory.ItemName.text.ToString());
-        Debug.Log(itemInventory.itemCount);
         PlayerCtrl.Instance.Inventory.AddItem(itemInventory);
     }
 
     protected virtual void Scroll(float t0)
     {
-
+        float  rand = UnityEngine.Random.Range(40, 60);
         foreach (RectTransform transform in transform)
         {
             Vector2 pos = transform.anchoredPosition;
-            transform.anchoredPosition = Vector2.Lerp(pos, pos - new Vector2(50, 0), t0);
+            transform.anchoredPosition = Vector2.Lerp(pos, pos - new Vector2(rand, 0), t0);
         }
     }
 

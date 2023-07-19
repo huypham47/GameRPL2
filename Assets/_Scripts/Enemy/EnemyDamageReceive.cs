@@ -73,11 +73,24 @@ public class EnemyDamageReceive : DamageReceiver
 
     public override void Deduct(float add)
     {
+        
         base.Deduct(add);
+        if (this.isDead) return;
+        this.enemyCtrl.Animator.SetBool("isHit", false);
+
         this.enemyCtrl.CanvasHealth.HealthBar.gameObject.SetActive(true);
         this.enemyCtrl.CanvasHealth.HealthBar.SetHealth(this.hp);
         this.enemyCtrl.CanvasHealth.HealthBar.canAdd = false;
         this.timer = 0;
+        this.enemyCtrl.Animator.SetBool("isHit", true);
+        StartCoroutine(this.StopAnimation());
+    }
+
+    IEnumerator StopAnimation()
+    {
+        yield return new WaitForSeconds(.4f);
+
+        this.enemyCtrl.Animator.SetBool("isHit", false);
     }
 
     public override void Add(float add)
@@ -90,4 +103,5 @@ public class EnemyDamageReceive : DamageReceiver
     {
         return FXSpawner.smokeOne;
     }
+
 }

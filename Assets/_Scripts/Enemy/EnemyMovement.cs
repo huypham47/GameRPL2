@@ -4,22 +4,14 @@ using UnityEngine;
 
 public class EnemyMovement : EnemyMovementAbstract
 {
-    [SerializeField] protected float speed = 0.005f;
+    [SerializeField] protected float speed = 0.009f;
     [SerializeField] protected float distance = 0f;
     [SerializeField] protected float minDistance = 4f;
     [SerializeField] protected float minDistanceShoot = 7.5f;
-    [SerializeField] protected Animator animator;
 
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.LoadAnimator();
-    }
-
-    protected virtual void LoadAnimator()
-    {
-        if (this.animator != null) return;
-        this.animator = this.enemyCtrl.transform.GetComponentInChildren<Animator>();
     }
 
     protected override void FixedUpdate()
@@ -37,10 +29,10 @@ public class EnemyMovement : EnemyMovementAbstract
             this.enemyCtrl.EnemyShooting.isShoot = false;
         if (this.distance < this.minDistance)
         {
-            animator.SetBool("isWalk", false);
+            this.enemyCtrl.Animator.SetBool("isWalk", false);
             return;
         }
-        animator.SetBool("isWalk", true);
+        this.enemyCtrl.Animator.SetBool("isWalk", true);
         Vector3 newPos = Vector3.Lerp(transform.parent.position, targetPosition, speed);
         transform.parent.position = newPos;
     }

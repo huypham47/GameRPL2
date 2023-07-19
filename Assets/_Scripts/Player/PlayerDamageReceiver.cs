@@ -9,6 +9,8 @@ public class PlayerDamageReceiver : DamageReceiver
     [SerializeField] protected float timer = 0;
     [SerializeField] protected float delay = 12f;
 
+    public PlayerDame playerDame;
+
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -47,6 +49,17 @@ public class PlayerDamageReceiver : DamageReceiver
     public override void Deduct(float add)
     {
         base.Deduct(add);
+        this.playerCtrl.Animator.SetBool("isHit", false);
+
+        this.playerDame.TakeDamage(add);
+        this.playerCtrl.Animator.SetBool("isHit", true);
+        StartCoroutine(this.StopAnimation());
+    }
+
+    IEnumerator StopAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        this.playerCtrl.Animator.SetBool("isHit", false);
     }
 
     public override void Add(float add)

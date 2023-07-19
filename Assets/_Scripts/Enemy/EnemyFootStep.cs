@@ -20,6 +20,7 @@ public class EnemyFootStep : EnemyAbstract
     protected virtual void OnCustomEventOfPlayer(string eventName)
     {
         if (eventName != EnemyFootStep.EVENT_STEP_NAME) return;
+
         AudioClip audioClip = this.enemyCtrl.EnemySO.WalkStep();
         SoundSpawner.Instance.PlayEffect(audioClip, transform.position, transform.rotation);
     }

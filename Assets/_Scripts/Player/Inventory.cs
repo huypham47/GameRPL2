@@ -10,7 +10,6 @@ public class Inventory : _MonoBehaviour
 
     public virtual bool AddItem(ItemInventory itemInventory)
     {
-        Debug.Log(itemInventory.itemProfileSO);
         int addCount = itemInventory.itemCount;
         ItemProfileSO itemProfileSO = itemInventory.itemProfileSO;
         ItemCode itemCode = itemProfileSO.itemCode;

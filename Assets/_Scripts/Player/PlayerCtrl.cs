@@ -19,6 +19,9 @@ public class PlayerCtrl : _MonoBehaviour
     [SerializeField] protected PlayerSO playerSO;
     public PlayerSO PlayerSO => playerSO;
 
+    [SerializeField] protected Animator animator;
+    public Animator Animator => animator;
+
     [SerializeField] protected AnimationEvents animationEvent;
     public AnimationEvents AnimationEvent => animationEvent;
 
@@ -41,6 +44,13 @@ public class PlayerCtrl : _MonoBehaviour
         this.LoadPlayerSO();
         this.LoadAnimationEvent();
         this.LoadMeshCharacter();
+        this.LoadAnimator();
+    }
+
+    protected virtual void LoadAnimator()
+    {
+        if (this.animator != null) return;
+        this.animator = GetComponentInChildren<Animator>();
     }
 
     protected virtual void LoadMeshCharacter()
@@ -84,8 +94,6 @@ public class PlayerCtrl : _MonoBehaviour
     {
         string character = PlayerPrefs.GetString("Character");
         ItemProfileSO item = ItemProfileSO.FindByItemName(character);
-        Debug.Log(item);
         this.meshCharacter.sharedMesh = item.mesh;
-        Debug.Log(item.mesh);
     }
 }
