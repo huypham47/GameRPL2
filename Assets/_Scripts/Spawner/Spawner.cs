@@ -65,7 +65,6 @@ public abstract class Spawner : _MonoBehaviour
         return newPrefab;
     }
 
-
     protected virtual Transform GetObjectFromPool(Transform prefab)
     {
         foreach(Transform poolObj in poolObjs)

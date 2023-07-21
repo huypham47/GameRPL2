@@ -51,7 +51,6 @@ public class UIReward : _MonoBehaviour
     public virtual void Close()
     {
         this.rewardCtrl.SetAlphaCanvas(0);
-        GameManager.Instance.Continue();
     }
 
     public virtual void ShowReward(EnemyCtrl enemyCtrl)

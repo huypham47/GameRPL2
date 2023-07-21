@@ -4,32 +4,34 @@ using UnityEngine;
 
 public class ItemCtrl : _MonoBehaviour
 {
-    [SerializeField] protected ItemDespawn itemDespawn;
-    public ItemDespawn ItemDespawn => itemDespawn;
     [SerializeField] protected ItemInventory itemInventory;
     public ItemInventory ItemInventory => itemInventory;
+
+    [SerializeField] protected ItemPickupable itemPickupable;
+
+    public ItemDropSpawner itemSpawner;
 
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.LoadItemDespawn();
         this.LoadItemInventory();
+        this.LoadItemPickupable();
     }
 
-    private void OnEnable()
+    public void SetUp()
     {
-        this.ResetItem();
+        this.itemPickupable.itemCtrl = this;
+    }
+
+    protected virtual void LoadItemPickupable()
+    {
+        if (this.itemPickupable != null) return;
+        this.itemPickupable = GetComponentInChildren<ItemPickupable>();
     }
 
     public virtual void SetItemInventory(ItemInventory itemInventory)
     {
         this.itemInventory = itemInventory.Clone();
-    }
-
-    protected virtual void LoadItemDespawn()
-    {
-        if (this.itemDespawn != null) return;
-        this.itemDespawn = GetComponentInChildren<ItemDespawn>();
     }
 
     protected virtual void LoadItemInventory()

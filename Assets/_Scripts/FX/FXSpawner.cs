@@ -24,9 +24,18 @@ public class FXSpawner : Spawner
         Transform prefab = Spawn(impactThree, transform.position, transform.rotation);
         damageCtrl damageCtrl = prefab.GetComponent<damageCtrl>();
         damageCtrl.SetUp(isCrit, damage, diretion);
+    }
 
-        //if (isCrit) textMeshPro.color = Color.red;
-        //else textMeshPro.color = Color.yellow;
-        //textMeshPro.text = damage.ToString();
+    public virtual Transform SpawnFx(string prefabName, Vector3 spawnPos, Quaternion rotation)
+    {
+        Transform prefab = Spawn(prefabName, spawnPos, rotation);
+        StartCoroutine(DespawnBytime(prefab));
+        return prefab;
+    }
+
+    IEnumerator DespawnBytime(Transform transform)
+    {
+        yield return new WaitForSeconds(2f);
+        Despawn(transform);
     }
 }

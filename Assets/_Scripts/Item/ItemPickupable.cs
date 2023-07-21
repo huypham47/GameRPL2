@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
@@ -7,20 +5,12 @@ public class ItemPickupable : _MonoBehaviour
 {
     [SerializeField] protected BoxCollider collider;
 
-    [SerializeField] protected ItemCtrl itemCtrl;
-    public ItemCtrl ItemCtrl => itemCtrl;
+    public ItemCtrl itemCtrl;
 
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadBoxCollider();
-        this.LoadItemCtrl();
-    }
-
-    protected virtual void LoadItemCtrl()
-    {
-        if (this.itemCtrl != null) return;
-        this.itemCtrl = transform.parent.GetComponent<ItemCtrl>();
     }
 
     protected virtual void LoadBoxCollider()
@@ -36,6 +26,6 @@ public class ItemPickupable : _MonoBehaviour
 
     public virtual void Picked()
     {
-        this.itemCtrl.ItemDespawn.DespawnObject();
+        this.itemCtrl.itemSpawner.Despawn(transform.parent);
     }
 }

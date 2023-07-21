@@ -7,6 +7,9 @@ public class PlayerCtrl : _MonoBehaviour
     private static PlayerCtrl instance;
     public static PlayerCtrl Instance => instance;
 
+    [SerializeField] protected PlayerFootStep playerFootStep;
+    [SerializeField] protected PlayerMove playerMove;
+
     [SerializeField] protected PlayerDamageReceiver playerDamageReceiver;
     public PlayerDamageReceiver PlayerDamageReceiver => playerDamageReceiver;
 
@@ -28,11 +31,14 @@ public class PlayerCtrl : _MonoBehaviour
     [SerializeField] protected SkinnedMeshRenderer meshCharacter;
     public SkinnedMeshRenderer MeshCharacter => meshCharacter;
 
+
+
     protected override void Awake()
     {
         base.Awake();
-        if (PlayerCtrl.instance != null) return;
-        PlayerCtrl.instance = this;
+        if (PlayerCtrl.instance == null) PlayerCtrl.instance = this; ;
+
+        this.SetUp();
     }
 
     protected override void LoadComponent()
@@ -45,6 +51,27 @@ public class PlayerCtrl : _MonoBehaviour
         this.LoadAnimationEvent();
         this.LoadMeshCharacter();
         this.LoadAnimator();
+        this.LoadPlayerFootStep();
+        this.LoadPlayerMove();
+    }
+
+    void SetUp()
+    {
+        this.playerFootStep.playerCtrl = this;
+        this.playerMove.playerCtrl = this;
+        this.PlayerDamageReceiver.playerCtrl = this;
+    }
+
+    protected virtual void LoadPlayerFootStep()
+    {
+        if (this.playerFootStep != null) return;
+        this.playerFootStep = GetComponentInChildren<PlayerFootStep>();
+    }
+
+    protected virtual void LoadPlayerMove()
+    {
+        if (this.playerMove != null) return;
+        this.playerMove = GetComponentInChildren<PlayerMove>();
     }
 
     protected virtual void LoadAnimator()

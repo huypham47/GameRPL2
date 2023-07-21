@@ -36,7 +36,6 @@ public class SaveManager : MonoBehaviour
             StateGameCtrl.isNewGame = false;
         }
         string jsonInventory = SaveSystem.GetString(inventoryName);
-        Debug.Log(jsonInventory);
         PlayerCtrl.Instance.Inventory.InventoryFromJson(jsonInventory);
 
         string jsonPlayer = SaveSystem.GetString(playerName);

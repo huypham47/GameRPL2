@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShooting : Shooting
+public class PlayerShooting : Shooter
 {
     
     [SerializeField] protected static PlayerShooting instance;

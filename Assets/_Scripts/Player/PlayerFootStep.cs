@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFootStep : PlayerAbstract
+public class PlayerFootStep : _MonoBehaviour
 {
+    public PlayerCtrl playerCtrl;
     const string EVENT_STEP_NAME = "stepdown";
 
     protected override void Awake()

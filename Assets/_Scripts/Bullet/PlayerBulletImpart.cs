@@ -4,24 +4,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerBulletImpart : Impact
+public class PlayerBulletImpart : BulletImpact
 {
-    [SerializeField] protected AllBulletCtrl allBulletCtrl;
-    public AllBulletCtrl AllBulletCtrl => allBulletCtrl;
-
-
-    protected override void LoadComponent()
-    {
-        base.LoadComponent();
-        this.LoadBulletCtrl();
-    }
-
-    protected virtual void LoadBulletCtrl()
-    {
-        if (this.allBulletCtrl != null) return;
-        this.allBulletCtrl = transform.parent.GetComponent<AllBulletCtrl>();
-    }
-
     protected override void OnTriggerEnter(Collider other)
     {
         if (other.name == "PlayerDamageReceiver") return;

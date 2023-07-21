@@ -6,27 +6,13 @@ public class BoomerangFly : _MonoBehaviour
 {
     [SerializeField] protected bool go = true;
     [SerializeField] protected Vector3 currentTarget;
-    [SerializeField] protected AllBulletCtrl allBulletCtrl;
-    public AllBulletCtrl AllBulletCtrl => allBulletCtrl;
-
-    protected override void LoadComponent()
-    {
-        base.LoadComponent();
-        this.LoadBulletCtrl();
-    }
-
-    protected virtual void LoadBulletCtrl()
-    {
-        if (this.allBulletCtrl != null) return;
-        this.allBulletCtrl = transform.parent.GetComponent<AllBulletCtrl>();
-    }
+    public AllBulletCtrl allBulletCtrl;
 
     private void OnEnable()
     {
         this.currentTarget = PlayerCtrl.Instance.transform.forward;
         this.timer = 0;
         this.go = true;
-        this.allBulletCtrl.Despawn.canDespawn = false;
         StartCoroutine(BoomerangReturn());
     }
 
@@ -50,7 +36,7 @@ public class BoomerangFly : _MonoBehaviour
         if (!go)
         {
             this.MoveReturn();
-            if (timer >= 1f && transform.parent.position == PlayerCtrl.Instance.transform.position) this.allBulletCtrl.Despawn.canDespawn = true;
+            if (timer >= 1f && transform.parent.position == PlayerCtrl.Instance.transform.position) this.allBulletCtrl.bulletSpawner.Despawn(transform.parent);
         }
     }
 

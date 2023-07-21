@@ -12,9 +12,6 @@ public class GameCtrl : _MonoBehaviour
     [SerializeField] protected Camera mainCamera;
     public Camera MainCamera => mainCamera;
 
-    [SerializeField] protected Transform player;
-    public Transform Player => player;
-
     protected override void Awake()
     {
         base.Awake();
@@ -25,7 +22,6 @@ public class GameCtrl : _MonoBehaviour
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.LoadPlayer();
         this.LoadCamera();
     }
 
@@ -33,11 +29,5 @@ public class GameCtrl : _MonoBehaviour
     {
         if (this.mainCamera != null) return;
         this.mainCamera = GameObject.FindObjectOfType<Camera>();
-    }
-
-    protected virtual void LoadPlayer()
-    {
-        if (this.player != null) return;
-        this.player = GameObject.Find("Player").transform;
     }
 }

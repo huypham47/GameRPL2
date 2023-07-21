@@ -37,7 +37,7 @@ public class ItemLooter : ItemAbstract
         if (itemPickupable == null) return;
 
         ItemCode itemCode = itemPickupable.GetItemCode();
-        ItemInventory itemInventory = itemPickupable.ItemCtrl.ItemInventory;
+        ItemInventory itemInventory = itemPickupable.itemCtrl.ItemInventory;
 
         if (this.inventory.AddItem(itemInventory))
         {

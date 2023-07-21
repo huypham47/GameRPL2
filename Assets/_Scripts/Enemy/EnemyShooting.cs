@@ -2,21 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShooting : Shooting
+public class EnemyShooting : Shooter
 {
-    [SerializeField] protected EnemyCtrl enemyCtrl;
-
-    protected override void LoadComponent()
-    {
-        base.LoadComponent();
-        this.LoadEnemyCtrl();
-    }
-
-    protected virtual void LoadEnemyCtrl()
-    {
-        if (this.enemyCtrl != null) return;
-        this.enemyCtrl = transform.parent.GetComponent<EnemyCtrl>();
-    }
+    public EnemyCtrl enemyCtrl;
 
     protected virtual void OnEnable()
     {
@@ -26,7 +14,7 @@ public class EnemyShooting : Shooting
 
     protected override void SpawnBullet(Vector3 spawnPos, Quaternion rotation)
     {
-        Transform newBullet = BulletSpawner.Instance.Spawn("Bullet_3", spawnPos, rotation);
+        BulletSpawner.Instance.Spawn("Bullet_3", spawnPos, rotation);
         AudioClip audioClip = this.enemyCtrl.EnemySO.punch;
         SoundSpawner.Instance.PlayEffect(audioClip, transform.position, transform.rotation);
     }

@@ -34,9 +34,16 @@ public class SoundSpawner : Spawner
     public virtual AudioSource Play(string audioName, AudioClip audioClip, Vector3 pos, Quaternion rot)
     {
         Transform audioObject = this.Spawn(audioName, pos, rot);
+        StartCoroutine(DespawnBytime(audioObject));
         AudioSource audioSource = audioObject.GetComponent<AudioSource>();
         audioSource.clip = audioClip;
         audioSource.Play();
         return audioSource;
+    }
+
+    IEnumerator DespawnBytime(Transform transform)
+    {
+        yield return new WaitForSeconds(2f);
+        Despawn(transform);
     }
 }

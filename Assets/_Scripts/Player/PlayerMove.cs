@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : PlayerAbstract
+public class PlayerMove : _MonoBehaviour
 {
+    public PlayerCtrl playerCtrl;
     [SerializeField] protected Rigidbody _rigidbody;
     [SerializeField] protected float moveSpeed = 4f;
+    [SerializeField] protected FixedJoystick fixedJoystick;
+
 
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadRigidbody();
     }
-
-    
 
     protected virtual void LoadRigidbody()
     {
@@ -23,11 +24,11 @@ public class PlayerMove : PlayerAbstract
 
     private void FixedUpdate()
     {
-        _rigidbody.velocity = new Vector3(InputManager.Instance.JoystickPos.x * this.moveSpeed,
+        _rigidbody.velocity = new Vector3(fixedJoystick.Horizontal * this.moveSpeed,
                                         0,
-                                        InputManager.Instance.JoystickPos.y * this.moveSpeed);
+                                        fixedJoystick.Vertical * this.moveSpeed);
 
-        if (InputManager.Instance.JoystickPos.x != 0 || InputManager.Instance.JoystickPos.y != 0)
+        if (fixedJoystick.Horizontal != 0 || fixedJoystick.Vertical != 0)
         {
             transform.parent.rotation = Quaternion.LookRotation(_rigidbody.velocity);
             this.playerCtrl.Animator.SetBool("isWalk", true);

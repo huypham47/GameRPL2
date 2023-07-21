@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Camtarget : _MonoBehaviour
 {
+    [SerializeField] protected Camera mainCamera;
+
     private void LateUpdate()
     {
-        transform.LookAt(transform.position + GameCtrl.Instance.MainCamera.transform.forward);
+        transform.LookAt(transform.position + mainCamera.transform.forward);
     }
 }

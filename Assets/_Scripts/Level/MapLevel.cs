@@ -2,12 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapLevel : LevelByScore
+public class MapLevel : _MonoBehaviour
 {
     [SerializeField] private static MapLevel instance;
     public static MapLevel Instance => instance;
 
     [SerializeField] protected bool canSpawnBoss = true;
+    [SerializeField] protected int levelCurrent = 1;
+    [SerializeField] protected int levelMax = 99;
+    public int LevelCurrent => levelCurrent;
+    public int LevelMax => levelMax;
+
+    public virtual void LevelSet(int newLevel)
+    {
+        this.levelCurrent = newLevel;
+        this.LimitLevel();
+    }
+
+    protected virtual void LimitLevel()
+    {
+        if (this.levelCurrent > this.levelMax) this.levelCurrent = this.levelMax;
+        if (this.levelCurrent < 1) this.levelCurrent = 1;
+    }
 
     protected override void Awake()
     {
@@ -16,9 +32,10 @@ public class MapLevel : LevelByScore
         MapLevel.instance = this;
     }
 
-    public override void LevelUp()
+    public virtual void LevelUp()
     {
-        base.LevelUp();
+        this.levelCurrent++;
+        this.LimitLevel();
         PlayerCtrl.Instance.PlayerDamageReceiver.AddMaxHP();
         PlayerCtrl.Instance.PlayerDamageReceiver.Add(1);
         
@@ -27,17 +44,18 @@ public class MapLevel : LevelByScore
         this.canSpawnBoss = true;
     }
 
-    public override void Leveling()
+    public virtual void Leveling()
     {
-        base.Leveling();
+        if (TextScore.Instance.Score % 15 == 0)
+            this.LevelUp();
         if (!this.canSpawnBoss) return;
         if (TextScore.Instance.Score % 15 == 14)
         {
-            EnemySpawnerCtrl.Instance.EnemySpawnerRandom.randomLimit = 0;
+            EnemySpawner.Instance.randomLimit = 0;
 
             Vector3 pos = PlayerCtrl.Instance.transform.position;
             pos.z += 10;
-            EnemySpawnerCtrl.Instance.EnemySpawner.Spawn("Boss", pos, transform.rotation);
+            EnemySpawner.Instance.Spawn("Boss", pos, transform.rotation);
             TextScore.Instance.canUpgradeScore = false;
             this.canSpawnBoss = false;
         }

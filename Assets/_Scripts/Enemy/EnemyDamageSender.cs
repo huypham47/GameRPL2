@@ -4,19 +4,7 @@ using UnityEngine;
 
 public class EnemyDamageSender : DamageSender
 {
-    [SerializeField] protected EnemyCtrl enemyCtrl;
-
-    protected override void LoadComponent()
-    {
-        base.LoadComponent();
-        this.LoadEnemyCtrl();
-    }
-
-    protected virtual void LoadEnemyCtrl()
-    {
-        if (this.enemyCtrl != null) return;
-        this.enemyCtrl = transform.parent.GetComponent<EnemyCtrl>();
-    }
+    public EnemyCtrl enemyCtrl;
 
     private void OnEnable()
     {

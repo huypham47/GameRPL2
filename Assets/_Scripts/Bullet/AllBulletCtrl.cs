@@ -4,29 +4,35 @@ using UnityEngine;
 
 public class AllBulletCtrl : _MonoBehaviour
 {
-    [SerializeField] protected DamageSender damageSender;
-    public DamageSender DamageSender => damageSender;
-
-    [SerializeField] protected Despawn despawn;
-    public Despawn Despawn => despawn;
+    [SerializeField] protected AllBulletDamageSender damageSender;
+    public AllBulletDamageSender DamageSender => damageSender;
 
     [SerializeField] protected BulletSO bulletSO;
     public BulletSO BulletSO => bulletSO;
+
+    [SerializeField] protected BulletImpact impact;
+
+    public BulletSpawner bulletSpawner;
 
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadDamageSender();
-        this.LoadDespawn();
         this.LoadBulletSO();
+        this.LoadImpact();
     }
 
-    protected virtual void LoadDespawn()
+    public void SetUp()
     {
-        if (this.despawn != null) return;
-        this.despawn = GetComponentInChildren<Despawn>();
+        this.impact.allBulletCtrl = this;
+        this.damageSender.allBulletCtrl = this;
     }
 
+    protected virtual void LoadImpact()
+    {
+        if (this.impact != null) return;
+        this.impact = GetComponentInChildren<BulletImpact>();
+    }
 
     protected virtual void LoadBulletSO()
     {
@@ -47,6 +53,6 @@ public class AllBulletCtrl : _MonoBehaviour
     protected virtual void LoadDamageSender()
     {
         if (this.damageSender != null) return;
-        this.damageSender = GetComponentInChildren<DamageSender>();
+        this.damageSender = GetComponentInChildren<AllBulletDamageSender>();
     }
 }

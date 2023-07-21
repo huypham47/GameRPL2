@@ -5,29 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDamageReceiver : DamageReceiver
 {
-    [SerializeField] protected PlayerCtrl playerCtrl;
+    public PlayerCtrl playerCtrl;
     [SerializeField] protected float timer = 0;
     [SerializeField] protected float delay = 12f;
 
     public PlayerDame playerDame;
-
-    protected override void LoadComponent()
-    {
-        base.LoadComponent();
-        this.LoadPlayerCtrl();
-    }
 
     protected override void ResetValue()
     {
         base.ResetValue();
         this.hpMax = 100;
         this.hp = 100;
-    }
-
-    protected virtual void LoadPlayerCtrl()
-    {
-        if (this.playerCtrl != null) return;
-        this.playerCtrl = transform.parent.GetComponent<PlayerCtrl>();
     }
 
     protected override void OnDead()
@@ -58,7 +46,7 @@ public class PlayerDamageReceiver : DamageReceiver
 
     IEnumerator StopAnimation()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.32f);
         this.playerCtrl.Animator.SetBool("isHit", false);
     }
 

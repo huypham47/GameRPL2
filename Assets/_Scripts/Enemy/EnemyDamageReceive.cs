@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyDamageReceive : DamageReceiver
 {
-    [SerializeField] protected EnemyCtrl enemyCtrl;
+    public EnemyCtrl enemyCtrl;
     [SerializeField] protected float timer = 0;
     [SerializeField] protected float delay = 3f;
 
@@ -25,21 +25,9 @@ public class EnemyDamageReceive : DamageReceiver
         this.Add(1);
     }
 
-    protected override void LoadComponent()
-    {
-        base.LoadComponent();
-        this.LoadEnemyCtrl();
-    }
-
-    protected virtual void LoadEnemyCtrl()
-    {
-        if (this.enemyCtrl != null) return;
-        this.enemyCtrl = transform.parent.GetComponent<EnemyCtrl>();
-    }
-
     protected override void OnDead()
     {
-        this.enemyCtrl.EnemyDespawn.DespawnObject();
+        this.enemyCtrl.enemySpawner.Despawn(transform.parent);
         this.OnDeadFX();
         TextScore.Instance.UpdateScore();
         MapLevel.Instance.Leveling();
@@ -59,12 +47,14 @@ public class EnemyDamageReceive : DamageReceiver
     {
         string fxName = this.GetOnDeadFXName();
         Vector3 spawnPos = transform.position;
-        Transform fxOnDead = FXSpawner.Instance.Spawn(fxName, spawnPos, transform.rotation);
+        Transform fxOnDead = FXSpawner.Instance.SpawnFx(fxName, spawnPos, transform.rotation);
         //fxOnDead.gameObject.SetActive(true);
     }
 
     public override void Reborn()
     {
+        this.enemyCtrl.CanvasHealth.HealthBar.gameObject.SetActive(false);
+
         int currentLvel = MapLevel.Instance.LevelCurrent-1;
         this.hpMax = this.enemyCtrl.EnemySO.upgradeLevels[currentLvel].enemyHp;
         this.enemyCtrl.CanvasHealth.HealthBar.SetMaxHealth(this.hpMax);
@@ -73,16 +63,15 @@ public class EnemyDamageReceive : DamageReceiver
 
     public override void Deduct(float add)
     {
-        
         base.Deduct(add);
         if (this.isDead) return;
         this.enemyCtrl.Animator.SetBool("isHit", false);
-
         this.enemyCtrl.CanvasHealth.HealthBar.gameObject.SetActive(true);
         this.enemyCtrl.CanvasHealth.HealthBar.SetHealth(this.hp);
         this.enemyCtrl.CanvasHealth.HealthBar.canAdd = false;
         this.timer = 0;
         this.enemyCtrl.Animator.SetBool("isHit", true);
+        StopCoroutine(this.StopAnimation());
         StartCoroutine(this.StopAnimation());
     }
 

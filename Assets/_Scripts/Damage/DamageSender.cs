@@ -18,13 +18,12 @@ public class DamageSender : _MonoBehaviour
 
     protected virtual void CreateImpactFX(string fxName, Vector3 pos)
     {
-        Transform fxImpact = FXSpawner.Instance.Spawn(fxName, pos, transform.rotation);
-        fxImpact.gameObject.SetActive(true);
+        Transform fxImpact = FXSpawner.Instance.SpawnFx(fxName, pos, transform.rotation);
     }
 
     protected void CreateDamageFX(string fxName, Vector3 pos, Vector3 direction)
     {
-        Transform fxDamage = FXSpawner.Instance.Spawn(fxName, pos, transform.rotation);
+        Transform fxDamage = FXSpawner.Instance.SpawnFx(fxName, pos, transform.rotation);
         fxDamage.gameObject.SetActive(true);
         float rand = Random.Range(0, 100);
         bool isCrit = false;

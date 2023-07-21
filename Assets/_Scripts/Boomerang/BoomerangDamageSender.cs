@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BoomerangDamageSender : DamageSender
+public class BoomerangDamageSender : AllBulletDamageSender
 {
-    [SerializeField] protected AllBulletCtrl allBulletCtrl;
-    public AllBulletCtrl AllBulletCtrl => allBulletCtrl;
-
     protected override void LoadComponent()
     {
         base.LoadComponent();

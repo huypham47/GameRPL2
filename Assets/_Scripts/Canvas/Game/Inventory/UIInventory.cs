@@ -39,14 +39,15 @@ public class UIInventory : UIInventoryAbstract
         rt.anchoredPosition = new Vector3(960, 17, 0);
         this.inventoryCtrl.SetAlphaCanvas(1);
         this.ShowItems();
-        GameManager.Instance.Pause();
+        Time.timeScale = 0;
     }
 
     public virtual void Close()
     {
         this.inventoryCtrl.SetAlphaCanvas(0);
         if (UIInform.Instance.IsOpen) UIInform.Instance.Toggle();
-        GameManager.Instance.Continue();
+        Time.timeScale = 1;
+
     }
 
     public virtual void ShowItems()

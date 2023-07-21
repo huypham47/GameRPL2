@@ -6,7 +6,6 @@ public class AbilitySummon : BaseAbility
 {
     [Header("Ability Summon")]
 
-    [SerializeField] protected Spawner spawner;
     [SerializeField] protected List<Transform> enemies;
     [SerializeField] protected int enemyLimit = 3;
 
@@ -14,19 +13,6 @@ public class AbilitySummon : BaseAbility
     {
         base.Start();
         this.enemies = new List<Transform>();
-    }
-
-    protected override void LoadComponent()
-    {
-        base.LoadComponent();
-        this.LoadEnemySpawner();
-    }
-
-    protected virtual void LoadEnemySpawner()
-    {
-        if (this.spawner != null) return;
-        GameObject enemySpawner = GameObject.Find("EnemySpawner");
-        this.spawner = enemySpawner.GetComponent<EnemySpawner>();
     }
 
     protected override void FixedUpdate()
@@ -61,10 +47,10 @@ public class AbilitySummon : BaseAbility
 
     protected virtual void Summon()
     {
-        Transform spawnPos = this.abilities.AbilityObjectCtrl.SpawnPoints.GetRandom();
-        Transform enemyPrefab = this.spawner.RandomPrefab();
-        Transform enemy = this.spawner.Spawn(enemyPrefab, spawnPos.position, spawnPos.rotation);
-        enemy.parent = this.abilities.AbilityObjectCtrl.transform;
+        Transform spawnPos = this.abilities.enemyCtrl.SpawnPoints.GetRandom();
+        Transform enemyPrefab = this.abilities.enemyCtrl.enemySpawner.RandomPrefab();
+        Transform enemy = this.abilities.enemyCtrl.enemySpawner.Spawn(enemyPrefab, spawnPos.position, spawnPos.rotation);
+        enemy.parent = this.abilities.enemyCtrl.transform;
         this.enemies.Add(enemy);
         StartCoroutine(ChangeParent(enemy));
         this.Active();

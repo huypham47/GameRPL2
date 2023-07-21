@@ -1,26 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletDamageSender : DamageSender
+public class BulletDamageSender : AllBulletDamageSender
 {
-    [SerializeField] protected AllBulletCtrl allBulletCtrl;
-
-    protected override void LoadComponent()
-    {
-        base.LoadComponent();
-        this.LoadBulletCtrl();
-    }
-
-    protected virtual void LoadBulletCtrl()
-    {
-        if (this.allBulletCtrl != null) return;
-        this.allBulletCtrl = transform.parent.GetComponent<AllBulletCtrl>();
-    }
-
     private void OnEnable()
     {
+        if (this.allBulletCtrl == null)
+        {
+            this.damage = 5;
+            return;
+        }
         this.damage = this.allBulletCtrl.BulletSO.damage;
+
     }
 
     public override void Send(DamageReceiver damageReceiver)
@@ -31,6 +21,6 @@ public class BulletDamageSender : DamageSender
 
     protected virtual void DestroyBullet()
     {
-        this.allBulletCtrl.Despawn.DespawnObject();
+        this.allBulletCtrl.bulletSpawner.Despawn(transform.parent);
     }
 }

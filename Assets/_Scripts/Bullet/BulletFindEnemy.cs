@@ -12,21 +12,6 @@ public class BulletFindEnemy : _MonoBehaviour
 
     [SerializeField] protected Transform enemyTarget;
 
-    [SerializeField] protected AllBulletCtrl allBulletCtrl;
-    public AllBulletCtrl AllBulletCtrl => allBulletCtrl;
-
-    protected override void LoadComponent()
-    {
-        base.LoadComponent();
-        this.LoadBulletCtrl();
-    }
-
-    protected virtual void LoadBulletCtrl()
-    {
-        if (this.allBulletCtrl != null) return;
-        this.allBulletCtrl = transform.parent.GetComponent<AllBulletCtrl>();
-    }
-
     private void OnEnable()
     {
         this.timer = 0;

@@ -42,12 +42,14 @@ public class UIPause : _MonoBehaviour
     public virtual void Open()
     {
         this.pauseCtrl.SetAlphaCanvas(1);
-        GameManager.Instance.Pause();
+        Time.timeScale = 0;
+
     }
 
     public virtual void Close()
     {
         this.pauseCtrl.SetAlphaCanvas(0);
-        GameManager.Instance.Continue();
+        Time.timeScale = 1;
+
     }
 }

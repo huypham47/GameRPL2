@@ -12,8 +12,24 @@ public class ItemDropSpawner : Spawner
     protected override void Awake()
     {
         base.Awake();
-        if (ItemDropSpawner.instance != null) return;
-        ItemDropSpawner.instance = this;
+        if (ItemDropSpawner.instance == null) ItemDropSpawner.instance = this; ;
+        
+        this.SetUp();
+    }
+
+    private void FixedUpdate()
+    {
+        this.DespawnItem();
+    }
+
+    public void SetUp()
+    {
+        foreach (var prefab in prefabs)
+        {
+            var item = prefab.GetComponent<ItemCtrl>();
+            item.itemSpawner = this;
+            item.SetUp();
+        }
     }
 
     public virtual List<ItemDropRate> Drop(List<ItemDropRate> dropLists, Vector3 pos, Quaternion rot)
@@ -63,4 +79,15 @@ public class ItemDropSpawner : Spawner
         return droppedItems;
     }
 
+    protected virtual void DespawnItem()
+    {
+        foreach (Transform item in holder)
+        {
+            if (!item.gameObject.activeSelf) continue;
+            if (Vector3.Distance(PlayerCtrl.Instance.transform.position, item.position) >= 30f)
+            {
+                Despawn(item.transform);
+            }
+        }
+    }
 }

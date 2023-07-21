@@ -6,20 +6,7 @@ public class EnemyMovementAbstract : _MonoBehaviour
 {
     [SerializeField] protected Vector3 targetPosition;
     
-    [SerializeField] protected EnemyCtrl enemyCtrl;
-    public EnemyCtrl EnemyCtrl => enemyCtrl;
-
-    protected override void LoadComponent()
-    {
-        base.LoadComponent();
-        this.LoadEnemyCtrl();
-    }
-
-    protected virtual void LoadEnemyCtrl()
-    {
-        if (this.enemyCtrl != null) return;
-        this.enemyCtrl = transform.parent.GetComponent<EnemyCtrl>();
-    }
+    public EnemyCtrl enemyCtrl;
 
     protected virtual void FixedUpdate()
     {
