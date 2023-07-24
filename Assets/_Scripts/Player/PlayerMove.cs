@@ -9,7 +9,6 @@ public class PlayerMove : _MonoBehaviour
     [SerializeField] protected float moveSpeed = 4f;
     [SerializeField] protected FixedJoystick fixedJoystick;
 
-
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -24,9 +23,11 @@ public class PlayerMove : _MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidbody.velocity = new Vector3(fixedJoystick.Horizontal * this.moveSpeed,
+        float rate = Mathf.Sqrt(Mathf.Pow(fixedJoystick.Horizontal, 2) + Mathf.Pow(fixedJoystick.Vertical, 2));
+        if (rate == 0) rate = 1;
+        _rigidbody.velocity = new Vector3(fixedJoystick.Horizontal / rate * this.moveSpeed,
                                         0,
-                                        fixedJoystick.Vertical * this.moveSpeed);
+                                        fixedJoystick.Vertical /rate * this.moveSpeed);
 
         if (fixedJoystick.Horizontal != 0 || fixedJoystick.Vertical != 0)
         {

@@ -43,6 +43,7 @@ public class SaveManager : MonoBehaviour
         if (StateGameCtrl.nextLevel)
         {
             playerData.playerPos = Vector3.zero;
+            playerData.score++;
             StateGameCtrl.nextLevel = false;
         }
         Player.Instance.SetData(playerData);

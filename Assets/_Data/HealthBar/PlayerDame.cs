@@ -12,11 +12,6 @@ public class PlayerDame : MonoBehaviour
     public Image front;
     public Image back;
 
-    private void Start()
-    {
-        health = maxHealth;
-    }
-
     private void Update()
     {
         health = Mathf.Clamp(health, 0, maxHealth);
@@ -49,8 +44,6 @@ public class PlayerDame : MonoBehaviour
 
         if (fillF < hFraction)
         {
-            Debug.Log("Hea");
-            Debug.Log(fillF + " " + hFraction + " " + back.fillAmount);
             back.fillAmount = hFraction;
             back.color = Color.green;
             lerpTime += Time.deltaTime;
@@ -62,13 +55,28 @@ public class PlayerDame : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+
         health -= damage;
         lerpTime = 0f;
     }
 
-    void Heal(float damage)
+    public void Heal(float damage)
     {
         health += damage;
         lerpTime = 0f;
+    }
+
+    public void SetMaxHp(float hp)
+    {
+        this.maxHealth = hp;
+        this.front.fillAmount = 1;
+        this.back.fillAmount = 1;
+    }
+
+    public void SetCurrentHp(float hp)
+    {
+        this.front.fillAmount = hp/maxHealth;
+        this.back.fillAmount = hp/maxHealth;
+        this.health = hp;
     }
 }

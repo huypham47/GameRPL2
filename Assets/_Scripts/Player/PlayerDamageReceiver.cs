@@ -72,4 +72,11 @@ public class PlayerDamageReceiver : DamageReceiver
         this.hp = hp;
         this.hpMax = hpMax;
     }
+
+    public override void Reborn()
+    {
+        base.Reborn();
+        this.playerDame.SetMaxHp(this.hpMax);
+        this.playerDame.SetCurrentHp(this.hp);
+    }
 }

@@ -24,7 +24,7 @@ public class AutoScroll : _MonoBehaviour
             yield return null;
         }
         this.AddReward();
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
         RewardSpawner.Instance.ClearItems();
         UIReward.Instance.Toggle();
     }
@@ -39,6 +39,10 @@ public class AutoScroll : _MonoBehaviour
         else uIItemInventory = transform.GetChild(2).GetComponent<UIItemInventory>();
 
         itemInventory.itemProfileSO = ItemProfileSO.FindByItemName(uIItemInventory.ItemName.text.ToString());
+        if(itemInventory.itemProfileSO.itemType == ItemType.Clothing)
+        {
+
+        }
         itemInventory.itemCount = Int32.Parse(uIItemInventory.ItemCount.text);
         PlayerCtrl.Instance.Inventory.AddItem(itemInventory);
     }

@@ -34,6 +34,8 @@ public class MapLevel : _MonoBehaviour
 
     public virtual void LevelUp()
     {
+        Debug.Log("LevelUp");
+
         this.levelCurrent++;
         this.LimitLevel();
         PlayerCtrl.Instance.PlayerDamageReceiver.AddMaxHP();
@@ -46,6 +48,7 @@ public class MapLevel : _MonoBehaviour
 
     public virtual void Leveling()
     {
+        Debug.Log("Leveling");
         if (TextScore.Instance.Score % 15 == 0)
             this.LevelUp();
         if (!this.canSpawnBoss) return;

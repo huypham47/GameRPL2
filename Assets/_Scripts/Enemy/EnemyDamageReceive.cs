@@ -8,10 +8,10 @@ public class EnemyDamageReceive : DamageReceiver
     public EnemyCtrl enemyCtrl;
     [SerializeField] protected float timer = 0;
     [SerializeField] protected float delay = 3f;
-
+    [SerializeField] protected bool canAdd = false;
     protected void FixedUpdate()
     {
-        if (this.enemyCtrl.CanvasHealth.HealthBar.canAdd)
+        if (this.canAdd)
         {
             this.timer += Time.fixedDeltaTime;
             if (this.timer < this.delay) return;
@@ -53,12 +53,13 @@ public class EnemyDamageReceive : DamageReceiver
 
     public override void Reborn()
     {
-        this.enemyCtrl.CanvasHealth.HealthBar.gameObject.SetActive(false);
+        this.enemyCtrl.CanvasHealth.gameObject.SetActive(false);
 
         int currentLvel = MapLevel.Instance.LevelCurrent-1;
         this.hpMax = this.enemyCtrl.EnemySO.upgradeLevels[currentLvel].enemyHp;
-        this.enemyCtrl.CanvasHealth.HealthBar.SetMaxHealth(this.hpMax);
         base.Reborn();
+        this.enemyCtrl.CanvasHealth.Dame.SetMaxHp(this.hpMax);
+        this.enemyCtrl.CanvasHealth.Dame.SetCurrentHp(this.hp);
     }
 
     public override void Deduct(float add)
@@ -66,12 +67,12 @@ public class EnemyDamageReceive : DamageReceiver
         base.Deduct(add);
         if (this.isDead) return;
         this.enemyCtrl.Animator.SetBool("isHit", false);
-        this.enemyCtrl.CanvasHealth.HealthBar.gameObject.SetActive(true);
-        this.enemyCtrl.CanvasHealth.HealthBar.SetHealth(this.hp);
-        this.enemyCtrl.CanvasHealth.HealthBar.canAdd = false;
+        this.enemyCtrl.CanvasHealth.Dame.gameObject.SetActive(true);
+        this.enemyCtrl.CanvasHealth.Dame.TakeDamage(add);
+        this.canAdd = false;
         this.timer = 0;
         this.enemyCtrl.Animator.SetBool("isHit", true);
-        StopCoroutine(this.StopAnimation());
+        StopAllCoroutines();
         StartCoroutine(this.StopAnimation());
     }
 
@@ -80,12 +81,15 @@ public class EnemyDamageReceive : DamageReceiver
         yield return new WaitForSeconds(.4f);
 
         this.enemyCtrl.Animator.SetBool("isHit", false);
+        yield return new WaitForSeconds(3.6f);
+        this.enemyCtrl.CanvasHealth.Dame.gameObject.SetActive(false);
+        this.canAdd = true;
     }
 
     public override void Add(float add)
     {
         base.Add(add);
-        this.enemyCtrl.CanvasHealth.HealthBar.SetHealth(this.hp);
+        this.enemyCtrl.CanvasHealth.Dame.Heal(add);
     }
 
     protected virtual string GetOnDeadFXName()

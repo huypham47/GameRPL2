@@ -56,6 +56,7 @@ public class UIReward : _MonoBehaviour
     public virtual void ShowReward(EnemyCtrl enemyCtrl)
     {
         List<ItemDropRate> items = enemyCtrl.EnemySO.upgradeLevels[MapLevel.Instance.LevelCurrent-1].dropList;
+        Debug.Log(items.Count + " " + MapLevel.Instance.LevelCurrent);
         RewardSpawner spawner = this.rewardCtrl.RewardSpawner;
         if (items.Count < 1) return;
         for (int i = 0; i < items.Count; i++)

@@ -16,6 +16,7 @@ public class BossDamageReceive : EnemyDamageReceive
     protected override void OnDead()
     {
         EnemySpawner.Instance.ClearEnemyFromBoss();
+        UIReward.Instance.ShowReward(this.enemyCtrl);
         TextScore.Instance.canUpgradeScore = true;
         this.wormHole.transform.position = transform.position;
         UIReward.Instance.Toggle();
@@ -25,7 +26,6 @@ public class BossDamageReceive : EnemyDamageReceive
     public override void Reborn()
     {
         base.Reborn();
-        UIReward.Instance.ShowReward(this.enemyCtrl);
+        this.enemyCtrl.Animator.SetFloat("speed", 0f);
     }
-
 }

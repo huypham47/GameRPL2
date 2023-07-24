@@ -20,7 +20,7 @@ public class BoomerangFly : _MonoBehaviour
 
     IEnumerator BoomerangReturn()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.05f);
         this.go = !go;
     }
 
@@ -31,7 +31,7 @@ public class BoomerangFly : _MonoBehaviour
 
         if (go)
         {
-            transform.parent.position = Vector3.MoveTowards(transform.parent.position, transform.position + currentTarget * 5f, Time.deltaTime * 4);
+            transform.parent.position = Vector3.MoveTowards(transform.parent.position, transform.position + currentTarget * 2f, Time.deltaTime * 10);
         }
         if (!go)
         {
@@ -42,6 +42,6 @@ public class BoomerangFly : _MonoBehaviour
 
     void MoveReturn()
     {
-        transform.parent.position = Vector3.MoveTowards(transform.parent.position, PlayerCtrl.Instance.transform.position, Time.deltaTime * 4);
+        transform.parent.position = Vector3.MoveTowards(transform.parent.position, PlayerCtrl.Instance.transform.position, Time.deltaTime * 10);
     }
 }
