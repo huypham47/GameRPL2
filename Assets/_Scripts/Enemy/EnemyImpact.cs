@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider))]
-public class EnemyImpact : Impact
+public class EnemyImpact : _MonoBehaviour
 {
     public EnemyCtrl enemyCtrl;
 
-    protected override void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        if(other.name == "PlayerDamageReceiver")
+        Debug.Log(other);
+        if(other.name == "Player")
         {
-            base.OnTriggerEnter(other);
             this.enemyCtrl.EnemyDamageSender.Send(other.transform);
         }
     }

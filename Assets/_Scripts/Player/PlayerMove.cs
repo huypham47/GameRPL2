@@ -6,7 +6,7 @@ public class PlayerMove : _MonoBehaviour
 {
     public PlayerCtrl playerCtrl;
     [SerializeField] protected Rigidbody _rigidbody;
-    [SerializeField] protected float moveSpeed = 4f;
+    [SerializeField] protected float moveSpeed = 3.5f;
     [SerializeField] protected FixedJoystick fixedJoystick;
 
     protected override void LoadComponent()
@@ -20,20 +20,24 @@ public class PlayerMove : _MonoBehaviour
         if (this._rigidbody != null) return;
         this._rigidbody = this.playerCtrl.transform.GetComponent<Rigidbody>();
     }
-
+    public float t;
     private void FixedUpdate()
     {
-        float rate = Mathf.Sqrt(Mathf.Pow(fixedJoystick.Horizontal, 2) + Mathf.Pow(fixedJoystick.Vertical, 2));
-        if (rate == 0) rate = 1;
-        _rigidbody.velocity = new Vector3(fixedJoystick.Horizontal / rate * this.moveSpeed,
+        Vector2 direction = new Vector2(fixedJoystick.Horizontal, fixedJoystick.Vertical);
+        direction.Normalize();
+        _rigidbody.velocity = new Vector3(direction.x * this.moveSpeed,
                                         0,
-                                        fixedJoystick.Vertical /rate * this.moveSpeed);
+                                        direction.y * this.moveSpeed);
 
         if (fixedJoystick.Horizontal != 0 || fixedJoystick.Vertical != 0)
         {
+            t += Time.fixedDeltaTime;
             transform.parent.rotation = Quaternion.LookRotation(_rigidbody.velocity);
             this.playerCtrl.Animator.SetBool("isWalk", true);
         }
-        else this.playerCtrl.Animator.SetBool("isWalk", false);
+        else
+        {
+            this.playerCtrl.Animator.SetBool("isWalk", false);
+        }
     }
 }

@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class EnemyBulletImpart : BulletImpact
 {
-    protected override void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other.name == "PlayerDamageReceiver") 
+        if (other.name == "Player") 
         {
-            base.OnTriggerEnter(other);
             other.ClosestPointOnBounds(transform.position);       
             this.allBulletCtrl.DamageSender.Send(other.transform);
             AudioClip audioClip = this.allBulletCtrl.BulletSO.bloodSplat;

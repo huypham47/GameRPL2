@@ -6,10 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBulletImpart : BulletImpact
 {
-    protected override void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other.name == "PlayerDamageReceiver") return;
-        base.OnTriggerEnter(other);
+        if (other.name == "Player") return;
         this.allBulletCtrl.DamageSender.Send(other.transform);
     }
 }

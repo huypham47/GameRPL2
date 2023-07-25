@@ -7,6 +7,39 @@ public class Inventory : _MonoBehaviour
     [SerializeField] protected int maxSlot = 70;
     [SerializeField] protected List<ItemInventory> items;
     public List<ItemInventory> Items => items;
+    [SerializeField] protected ItemUpgrade itemUpgrade;
+    [SerializeField] protected ItemDrop itemDrop;
+
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        this.LoadItemUpgrade();
+        this.LoadItemDrop();
+    }
+
+    protected virtual void LoadItemUpgrade()
+    {
+        if (this.itemUpgrade != null) return;
+        this.itemUpgrade = GetComponentInChildren<ItemUpgrade>();
+    }
+
+    protected virtual void LoadItemDrop()
+    {
+        if (this.itemDrop != null) return;
+        this.itemDrop = GetComponentInChildren<ItemDrop>();
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        this.SetUp();
+    }
+
+    protected virtual void SetUp()
+    {
+        this.itemUpgrade.inventory = this;
+        this.itemDrop.inventory = this;
+    }
 
     public virtual bool AddItem(ItemInventory itemInventory)
     {

@@ -32,6 +32,9 @@ public class EnemyCtrl : _MonoBehaviour
     public SpawnPoints SpawnPoints => spawnPoints;
 
     public EnemySpawner enemySpawner;
+    [SerializeField] protected BoxCollider boxCollider;
+    [SerializeField] protected Rigidbody _rigibody;
+    public Rigidbody Rigibody => _rigibody;
 
     protected override void LoadComponent()
     {
@@ -49,7 +52,22 @@ public class EnemyCtrl : _MonoBehaviour
         this.LoadAnimationEvent();
         this.LoadAnimator();
         this.LoadSpawnPoint();
+        this.LoadCollider();
+        this.LoadRigibody();
     }
+
+    protected virtual void LoadCollider()
+    {
+        if (this.boxCollider != null) return;
+        this.boxCollider = GetComponent<BoxCollider>();
+    }
+
+    protected virtual void LoadRigibody()
+    {
+        if (this._rigibody != null) return;
+        this._rigibody = GetComponent<Rigidbody>();
+    }
+
 
     public void SetUp()
     {

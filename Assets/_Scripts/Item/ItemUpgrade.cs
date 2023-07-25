@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class ItemUpgrade : ItemAbstract
-{
+public  class ItemUpgrade : _MonoBehaviour
+{ 
+    public Inventory inventory;
+
     [SerializeField] protected int maxLevel = 9;
 
     public virtual bool UpgradeItem(int itemIndex)

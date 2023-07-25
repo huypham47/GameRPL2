@@ -12,7 +12,7 @@ public class EnemySpawner : Spawner
 
     [SerializeField] protected float randomDelay = 3f;
     [SerializeField] protected float randomTimer = 0f;
-    public int randomLimit = 1;
+    public int randomLimit = 2;
 
     public static string enemyOne = "Enemy_2";
 
