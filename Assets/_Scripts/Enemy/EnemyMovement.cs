@@ -8,16 +8,26 @@ public class EnemyMovement : EnemyMovementAbstract
     [SerializeField] protected float distance = 0f;
     [SerializeField] protected float minDistance = 4f;
     [SerializeField] protected float minDistanceShoot = 7.5f;
+    [SerializeField] protected float force = 7.5f;
 
     protected override void LoadComponent()
     {
         base.LoadComponent();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            this.Move();
+            this.enemyCtrl.Rigibody.AddForce(transform.up * force, ForceMode.VelocityChange);
+        }
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        this.Moving();
+        //this.Moving();
     }
 
     protected virtual void Moving()
@@ -39,6 +49,12 @@ public class EnemyMovement : EnemyMovementAbstract
         this.enemyCtrl.Rigibody.velocity = new Vector3(direction.x, this.enemyCtrl.Rigibody.velocity.y, direction.z) * speed;
     }
 
+    protected virtual void Move()
+    {
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        this.enemyCtrl.Rigibody.velocity = new Vector3(direction.x, force, direction.z) * speed;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision);
@@ -49,4 +65,6 @@ public class EnemyMovement : EnemyMovementAbstract
         Debug.Log(other);
 
     }
+
+
 }

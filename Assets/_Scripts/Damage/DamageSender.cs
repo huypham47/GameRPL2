@@ -12,7 +12,7 @@ public class DamageSender : _MonoBehaviour
         DamageReceiver damageReceiver = obj.GetComponentInChildren<DamageReceiver>();
         if (damageReceiver == null) return;
         this.CreateImpactFX(FXSpawner.impactOne, obj.transform.position + obj.forward);
-        this.CreateDamageFX(FXSpawner.impactThree, obj.position, -obj.forward);
+        this.CreateDamageFX(FXSpawner.impactThree, obj.position);
         this.Send(damageReceiver);
     }
 
@@ -21,7 +21,7 @@ public class DamageSender : _MonoBehaviour
         Transform fxImpact = FXSpawner.Instance.SpawnFx(fxName, pos, transform.rotation);
     }
 
-    protected void CreateDamageFX(string fxName, Vector3 pos, Vector3 direction)
+    protected void CreateDamageFX(string fxName, Vector3 pos)
     {
         Transform fxDamage = FXSpawner.Instance.SpawnFx(fxName, pos, transform.rotation);
         fxDamage.gameObject.SetActive(true);
@@ -33,14 +33,9 @@ public class DamageSender : _MonoBehaviour
             this.damageCrit = this.damageCrit * 1.5f;
             isCrit = true;
         }
-        damageCtrl damageCtrl = fxDamage.GetComponent<damageCtrl>();
-        damageCtrl.SetUp(isCrit, this.damageCrit, direction);
+        DamageCtrl damageCtrl = fxDamage.GetComponent<DamageCtrl>();
+        damageCtrl.SetUp(isCrit, this.damageCrit);
     }
-
-    //protected virtual string GetImpactFXName()
-    //{
-    //    return FXSpawner.impactOne;
-    //}
 
     public virtual void Send(DamageReceiver damageReceiver)
     {

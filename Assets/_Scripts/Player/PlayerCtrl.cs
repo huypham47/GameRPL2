@@ -31,7 +31,8 @@ public class PlayerCtrl : _MonoBehaviour
     [SerializeField] protected SkinnedMeshRenderer meshCharacter;
     public SkinnedMeshRenderer MeshCharacter => meshCharacter;
 
-
+    [SerializeField] protected Rigidbody _rigidbody;
+    public Rigidbody Rigidbody => _rigidbody;
 
     protected override void Awake()
     {
@@ -53,6 +54,7 @@ public class PlayerCtrl : _MonoBehaviour
         this.LoadAnimator();
         this.LoadPlayerFootStep();
         this.LoadPlayerMove();
+        this.LoadRigidbody();
     }
 
     void SetUp()
@@ -60,6 +62,12 @@ public class PlayerCtrl : _MonoBehaviour
         this.playerFootStep.playerCtrl = this;
         this.playerMove.playerCtrl = this;
         this.PlayerDamageReceiver.playerCtrl = this;
+    }
+
+    protected virtual void LoadRigidbody()
+    {
+        if (this._rigidbody != null) return;
+        this._rigidbody = GetComponent<Rigidbody>();
     }
 
     protected virtual void LoadPlayerFootStep()

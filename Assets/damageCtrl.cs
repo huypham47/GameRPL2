@@ -4,11 +4,11 @@ using TMPro;
 using UnityEngine;
 using DG.Tweening;
 
-public class damageCtrl : _MonoBehaviour
+public class DamageCtrl : _MonoBehaviour
 {
-    private const float DISAPPEAR_TIMER_MAX = .5f;
+    private const float DISAPPEAR_TIMER_MAX = 0.3f;
 
-    public Vector3 direction;
+    public Vector3 direction = Vector3.up;
 
     [SerializeField] protected TextMeshPro textMeshPro;
 
@@ -22,9 +22,7 @@ public class damageCtrl : _MonoBehaviour
         this.textMeshPro = GetComponentInChildren<TextMeshPro>();
     }
 
-    
-
-    public void SetUp(bool isCrit, float damage, Vector3 direction)
+    public void SetUp(bool isCrit, float damage)
     {
         textMeshPro.SetText(damage.ToString());
         if (isCrit)
@@ -39,9 +37,8 @@ public class damageCtrl : _MonoBehaviour
         }
         textMeshPro.color = color;
         disappearTimer = DISAPPEAR_TIMER_MAX;
-        this.direction = direction;
         transform.localScale = new Vector3(.5f, .5f, .5f);
-        transform.DOScale(new Vector3(1f, 1f, 1f), .2f);
+        transform.DOScale(new Vector3(1f, 1f, 1f), .15f);
         //transform.localScale -= Vector3.one * Time.deltaTime;
     }
 
@@ -52,13 +49,17 @@ public class damageCtrl : _MonoBehaviour
 
         if (disappearTimer < 0)
         {
-            float disappearSpeed = 3f;
-            this.color.a -= disappearSpeed * Time.deltaTime;
+            this.color.a -= 4f * Time.deltaTime;
             textMeshPro.color = color;
             if(color.a < 0)
             {
                 FXSpawner.Instance.Despawn(transform);
             }
         }
+    }
+
+    private void LateUpdate()
+    {
+        transform.LookAt(transform.position + GameCtrl.Instance.MainCamera.transform.forward);
     }
 }

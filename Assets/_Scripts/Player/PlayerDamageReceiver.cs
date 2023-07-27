@@ -54,7 +54,16 @@ public class PlayerDamageReceiver : DamageReceiver
     {
         base.Add(add);
        
-        Transform fxOnDead = FXSpawner.Instance.Spawn(FXSpawner.impactTrue, transform.position, transform.rotation);
+        Transform fxHeal = FXSpawner.Instance.Spawn(FXSpawner.impactTrue, transform.position, transform.rotation);
+        fxHeal.parent = transform;
+        StartCoroutine(setFxRealParent(fxHeal));
+    }
+
+    IEnumerator setFxRealParent(Transform fxHeal)
+    {
+        yield return new WaitForSeconds(2f);
+        fxHeal.parent = FXSpawner.Instance.Holder;
+        FXSpawner.Instance.Despawn(fxHeal);
     }
 
     protected virtual string GetOnDeadFXName()

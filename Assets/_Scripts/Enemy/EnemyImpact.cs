@@ -8,7 +8,6 @@ public class EnemyImpact : _MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other);
         if(other.name == "Player")
         {
             this.enemyCtrl.EnemyDamageSender.Send(other.transform);

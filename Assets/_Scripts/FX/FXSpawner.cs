@@ -19,13 +19,6 @@ public class FXSpawner : Spawner
         FXSpawner.instance = this;
     }
 
-    public void SpawnDamage(bool isCrit, float damage, Vector3 diretion)
-    {
-        Transform prefab = Spawn(impactThree, transform.position, transform.rotation);
-        damageCtrl damageCtrl = prefab.GetComponent<damageCtrl>();
-        damageCtrl.SetUp(isCrit, damage, diretion);
-    }
-
     public virtual Transform SpawnFx(string prefabName, Vector3 spawnPos, Quaternion rotation)
     {
         Transform prefab = Spawn(prefabName, spawnPos, rotation);

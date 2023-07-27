@@ -18,7 +18,7 @@ public class BossDamageReceive : EnemyDamageReceive
         EnemySpawner.Instance.ClearEnemyFromBoss();
         UIReward.Instance.ShowReward(this.enemyCtrl);
         TextScore.Instance.canUpgradeScore = true;
-        this.wormHole.transform.position = transform.position;
+        this.wormHole.transform.position = PlayerCtrl.Instance.transform.position + new Vector3 (0,0,5);
         UIReward.Instance.Toggle();
         base.OnDead();
     }
